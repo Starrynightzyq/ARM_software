@@ -1,2 +1,3 @@
 *.o
-/m3_for_arty_a7/Build_Keil/objects/*
+./m3_for_arty_a7/Build_Keil/objects/*
+./m3_for_arty_a7/sdk_workspace/.metadata/*
