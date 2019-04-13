@@ -28,11 +28,13 @@
 // Xilinx specific headers
 #include "xparameters.h"
 #include "xgpio.h"
+#include "sleep.h"
 
 #include "m3_for_arty.h"        // Project specific header
 #include "gpio.h"
 #include "uart.h"
 #include "spi.h"
+#include "iic.h"
 
 //#define SIM_BUILD
 
@@ -40,6 +42,8 @@
 
 int main (void)
 {
+    // 
+    u8 ReadBuffer[10];
 
     // Define local variables
     int     status;
@@ -82,7 +86,9 @@ int main (void)
 
     // Initialise the UART
     InitialiseUART();
-  
+
+    // Initialise the IIC
+    InitialiseIIC();  
 
     // Clear all interrupts
     NVIC_ClearAllPendingIRQ();
@@ -101,6 +107,9 @@ int main (void)
     // Enable UART Interrupts
     NVIC_EnableIRQ(UART0_IRQn);
     EnableUARTInterrupts();
+
+    // Enable IIC Interrupts
+    NVIC_EnableIRQ(IIC0_IRQn);
 
     // Read the DAPLinkFitted input, (assigned to IRQ[31]).
     // Note the IRQ is never enabled, so polling the pending register will indicate the status
@@ -233,7 +242,9 @@ int main (void)
         if ( CheckUARTRxBytes() != 0 )
             print ("x");
         */
-    
+        Iic0ReadData(0x0B, ReadBuffer, 1);
+        xil_printf("Temp senser's ID is : %2x\r\n", ReadBuffer[0]);
+        sleep(1000000);
     }
 }
 

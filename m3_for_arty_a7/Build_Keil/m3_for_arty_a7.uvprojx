@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>CORTEX_M3 ARTY_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
+              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -410,6 +410,31 @@
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_assert.c</FilePath>
             </File>
+            <File>
+              <FileName>xil_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usleep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\usleep.c</FilePath>
+            </File>
+            <File>
+              <FileName>sleep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\sleep.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtime_l.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xtime_l.c</FilePath>
+            </File>
+            <File>
+              <FileName>xil_sleepcommon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_sleepcommon.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -449,6 +474,16 @@
               <FileName>uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\uart\uart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>IIC</GroupName>
+          <Files>
+            <File>
+              <FileName>iic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\iic\iic.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -559,6 +594,71 @@
               <FileName>xuartlite_stats.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartlite_v3_2\src\xuartlite_stats.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Xilinx_IIC</GroupName>
+          <Files>
+            <File>
+              <FileName>xiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_dyn_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_dyn_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_intr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_intr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_l.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_l.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_multi_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_multi_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_options.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_options.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_sinit.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_slave.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_stats.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_stats.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -971,6 +1071,31 @@
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_assert.c</FilePath>
             </File>
+            <File>
+              <FileName>xil_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usleep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\usleep.c</FilePath>
+            </File>
+            <File>
+              <FileName>sleep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\sleep.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtime_l.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xtime_l.c</FilePath>
+            </File>
+            <File>
+              <FileName>xil_sleepcommon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_sleepcommon.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1010,6 +1135,16 @@
               <FileName>uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\uart\uart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>IIC</GroupName>
+          <Files>
+            <File>
+              <FileName>iic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\iic\iic.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1120,6 +1255,71 @@
               <FileName>xuartlite_stats.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartlite_v3_2\src\xuartlite_stats.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Xilinx_IIC</GroupName>
+          <Files>
+            <File>
+              <FileName>xiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_dyn_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_dyn_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_intr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_intr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_l.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_l.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_multi_master.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_multi_master.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_options.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_options.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_sinit.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_slave.c</FilePath>
+            </File>
+            <File>
+              <FileName>xiic_stats.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_stats.c</FilePath>
             </File>
           </Files>
         </Group>

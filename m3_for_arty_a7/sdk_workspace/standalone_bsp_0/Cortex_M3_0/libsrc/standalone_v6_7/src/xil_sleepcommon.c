@@ -74,7 +74,7 @@
 #elif defined (__MICROBLAZE__)
 	sleep_MB(seconds);
 #else
-	sleep_A9(seconds);
+	sleep_M1(seconds);
 #endif
 
  }
@@ -100,7 +100,7 @@
 #elif defined (__MICROBLAZE__)
 	usleep_MB(useconds);
 #else
-	usleep_A9(useconds);
+	usleep_M1(useconds);
 #endif
 
  }

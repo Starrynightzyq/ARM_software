@@ -69,7 +69,7 @@ typedef enum IRQn
   DAP_SPI0_IRQn                 = 5,       /* DAPLink board SPI 0 Interrupt         */
   DAP_QSPI_XIP_IRQn             = 6,       /* DAPLink board Quad SPI XIP Interrupt  */
   DAPLinkFittedn_IRQn           = 7,       /* Static signal used to detect fitting of DAPLink board */
-  Unused8_IRQn                  = 8,
+  IIC0_IRQn                     = 8,
   Unused9_IRQn                  = 9,
   Unused10_IRQn                 = 10,
   Unused11_IRQn                 = 11,
