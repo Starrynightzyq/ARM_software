@@ -34,7 +34,7 @@
 #include "uart.h"
 #include "spi.h"
 
-#define SIM_BUILD
+//#define SIM_BUILD
 
 /*******************************************************************/
 
