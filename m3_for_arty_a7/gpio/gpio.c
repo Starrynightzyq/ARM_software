@@ -33,7 +33,7 @@
  */
  
 static XGpio Gpio_Led_DIPSw;   /* The driver instance for GPIO Device 0 */
-static XGpio Gpio_RGBLed_PB;   /* The driver instance for GPIO Device 1 */
+static XGpio Gpio_Cmos_Ctrl;   /* The driver instance for GPIO Device 1 */
 static XGpio Gpio_DAPLink;     /* The driver instance for the DAPLink GPIO */
 
 /*****************************************************************************/
@@ -53,7 +53,7 @@ int InitialiseGPIO( void )
         return XST_FAILURE;
     }
 
-    status = XGpio_Initialize(&Gpio_RGBLed_PB, XPAR_AXI_GPIO_1_DEVICE_ID);
+    status = XGpio_Initialize(&Gpio_Cmos_Ctrl, XPAR_AXI_GPIO_1_DEVICE_ID);
     if (status != XST_SUCCESS)  {
         return XST_FAILURE;
     }
@@ -73,20 +73,19 @@ int InitialiseGPIO( void )
 //    ARTY_A7_GPIO0->TRI1 = 0xffffffff;
 
     // GPIO1
-    // Port0 drives led_rgb.  Set 12 UART ports to be outputs.
-    XGpio_SetDataDirection(&Gpio_RGBLed_PB, ARTY_A7_RGB_CHANNEL, 0xfffff000);
-//    ARTY_A7_GPIO1->TRI0 = 0xfffff000;
-    // Port 1 inputs the push button switches. Set to be inputs
-    XGpio_SetDataDirection(&Gpio_RGBLed_PB, ARTY_A7_PB_CHANNEL, 0xffffffff);
-//    ARTY_A7_GPIO1->TRI1 = 0xffffffff;
+    // Port 0 drives cmos_pwdn.  all output.
+    XGpio_SetDataDirection(&Gpio_Cmos_Ctrl, CMOS_PWDN_CHANNEL, 0x00000000);
+    // Port 1 drives cmos_rst.  all output.
+    XGpio_SetDataDirection(&Gpio_Cmos_Ctrl, CMOS_RST_CHANNEL, 0x00000000);
     
     // DAPLink GPIO
     // Single channel
     XGpio_SetDataDirection(&Gpio_DAPLink, ARTY_A7_DAPLINK_GPIO_CHANNEL, 0x00000000);
 
 
-    // Default value of LEDs
-    XGpio_DiscreteWrite(&Gpio_RGBLed_PB, ARTY_A7_RGB_CHANNEL, 0x0);
+    // Default value of cmos_pwdn and cmos_rst
+    XGpio_DiscreteWrite(&Gpio_Cmos_Ctrl, CMOS_PWDN_CHANNEL, 0x0); // pwdn works high
+    XGpio_DiscreteWrite(&Gpio_Cmos_Ctrl, CMOS_RST_CHANNEL, 0x1);  // rst works low
 //    ARTY_A7_GPIO1->DATA0 = 0x0;
     
     // Write 0xA to LEDs
@@ -101,11 +100,11 @@ int InitialiseGPIO( void )
 void EnableGPIOInterrupts( void )
 {
     // Push buttons and DIP switches are on Channel 2
-    XGpio_InterruptEnable(&Gpio_RGBLed_PB, XGPIO_IR_CH2_MASK);
+    // XGpio_InterruptEnable(&Gpio_Cmos_Ctrl, XGPIO_IR_CH2_MASK);
     XGpio_InterruptEnable(&Gpio_Led_DIPSw, XGPIO_IR_CH2_MASK);
 
     // Having enabled the M1 to handle the interrupts, now enable the GPIO to send the interrupts
-    XGpio_InterruptGlobalEnable(&Gpio_RGBLed_PB);
+    // XGpio_InterruptGlobalEnable(&Gpio_Cmos_Ctrl);
     XGpio_InterruptGlobalEnable(&Gpio_Led_DIPSw);
 }
 
@@ -127,7 +126,7 @@ void GPIO0_Handler ( void )
 
 void GPIO1_Handler ( void )
 {
-
+/*
     int mask, led_val, incr;
     volatile uint32_t gpio_push_buttons;
     volatile uint32_t gpio_leds_rgb;
@@ -135,11 +134,11 @@ void GPIO1_Handler ( void )
     // For LEDs, cycle around colour each time respective push button is pressed
     // Only change if a pushbutton is pressed.
     // This prevents a double change as the button is released.
-    if( XGpio_DiscreteRead(&Gpio_RGBLed_PB, ARTY_A7_PB_CHANNEL) != 0 )
+    if( XGpio_DiscreteRead(&Gpio_Cmos_Ctrl, CMOS_RST_CHANNEL) != 0 )
     {
         // LEDs are on a 3 spacing.  So multiply button press by 2^3 to increment the correct LED
-        gpio_push_buttons = XGpio_DiscreteRead(&Gpio_RGBLed_PB, ARTY_A7_PB_CHANNEL);
-        gpio_leds_rgb     = XGpio_DiscreteRead(&Gpio_RGBLed_PB, ARTY_A7_RGB_CHANNEL);
+        gpio_push_buttons = XGpio_DiscreteRead(&Gpio_Cmos_Ctrl, CMOS_RST_CHANNEL);
+        gpio_leds_rgb     = XGpio_DiscreteRead(&Gpio_Cmos_Ctrl, CMOS_PWDN_CHANNEL);
         if ( gpio_push_buttons & 0x1 ) {
                 mask = 0x7;
                 incr = 0x1;
@@ -158,13 +157,14 @@ void GPIO1_Handler ( void )
         led_val = (led_val+incr) & mask;
         gpio_leds_rgb = (gpio_leds_rgb & ~mask) | led_val;
         
-        XGpio_DiscreteWrite(&Gpio_RGBLed_PB, ARTY_A7_RGB_CHANNEL, gpio_leds_rgb);
+        XGpio_DiscreteWrite(&Gpio_Cmos_Ctrl, CMOS_PWDN_CHANNEL, gpio_leds_rgb);
     }
 
     // Clear interrupt from GPIO
-    XGpio_InterruptClear(&Gpio_RGBLed_PB, XGPIO_IR_MASK);
+    XGpio_InterruptClear(&Gpio_Cmos_Ctrl, XGPIO_IR_MASK);
     // Clear interrupt in NVIC
     NVIC_ClearPendingIRQ(GPIO1_IRQn);
+*/   
 }
 
 /* Note : No interrupt handler for DAPLink GPIO, it does not have the IRQ line connected

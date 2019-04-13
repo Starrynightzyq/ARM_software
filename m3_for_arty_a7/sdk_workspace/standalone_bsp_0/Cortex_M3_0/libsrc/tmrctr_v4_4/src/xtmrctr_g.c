@@ -38,25 +38,18 @@
 *******************************************************************/
 
 #include "xparameters.h"
-#include "xiic.h"
+#include "xtmrctr.h"
 
 /*
 * The configuration table for devices
 */
 
-XIic_Config XIic_ConfigTable[XPAR_XIIC_NUM_INSTANCES] =
+XTmrCtr_Config XTmrCtr_ConfigTable[XPAR_XTMRCTR_NUM_INSTANCES] =
 {
 	{
-		XPAR_AXI_IIC_0_DEVICE_ID,
-		XPAR_AXI_IIC_0_BASEADDR,
-		XPAR_AXI_IIC_0_TEN_BIT_ADR,
-		XPAR_AXI_IIC_0_GPO_WIDTH
-	},
-	{
-		XPAR_AXI_IIC_1_DEVICE_ID,
-		XPAR_AXI_IIC_1_BASEADDR,
-		XPAR_AXI_IIC_1_TEN_BIT_ADR,
-		XPAR_AXI_IIC_1_GPO_WIDTH
+		XPAR_AXI_TIMER_0_DEVICE_ID,
+		XPAR_AXI_TIMER_0_BASEADDR,
+		XPAR_AXI_TIMER_0_CLOCK_FREQ_HZ
 	}
 };
 

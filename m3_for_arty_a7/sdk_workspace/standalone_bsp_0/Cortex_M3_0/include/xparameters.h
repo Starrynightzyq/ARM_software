@@ -25,7 +25,9 @@
 #define PLATFORM_ARM
  
 /* Definitions for sleep timer configuration */
-#define XSLEEP_TIMER_IS_DEFAULT_TIMER
+#define SLEEP_TIMER_BASEADDR XPAR_AXI_TIMER_0_BASEADDR 
+#define SLEEP_TIMER_FREQUENCY XPAR_AXI_TIMER_0_CLOCK_FREQ_HZ 
+#define XSLEEP_TIMER_IS_AXI_TIMER
  
  
 /******************************************************************/
@@ -124,7 +126,7 @@
 /******************************************************************/
 
 /* Definitions for driver IIC */
-#define XPAR_XIIC_NUM_INSTANCES 1
+#define XPAR_XIIC_NUM_INSTANCES 2
 
 /* Definitions for peripheral AXI_IIC_0 */
 #define XPAR_AXI_IIC_0_DEVICE_ID 0
@@ -132,6 +134,14 @@
 #define XPAR_AXI_IIC_0_HIGHADDR 0x4080FFFF
 #define XPAR_AXI_IIC_0_TEN_BIT_ADR 0
 #define XPAR_AXI_IIC_0_GPO_WIDTH 1
+
+
+/* Definitions for peripheral AXI_IIC_1 */
+#define XPAR_AXI_IIC_1_DEVICE_ID 1
+#define XPAR_AXI_IIC_1_BASEADDR 0x40810000
+#define XPAR_AXI_IIC_1_HIGHADDR 0x4081FFFF
+#define XPAR_AXI_IIC_1_TEN_BIT_ADR 0
+#define XPAR_AXI_IIC_1_GPO_WIDTH 1
 
 
 /******************************************************************/
@@ -142,6 +152,13 @@
 #define XPAR_IIC_0_HIGHADDR 0x4080FFFF
 #define XPAR_IIC_0_TEN_BIT_ADR 0
 #define XPAR_IIC_0_GPO_WIDTH 1
+
+/* Canonical definitions for peripheral AXI_IIC_1 */
+#define XPAR_IIC_1_DEVICE_ID XPAR_AXI_IIC_1_DEVICE_ID
+#define XPAR_IIC_1_BASEADDR 0x40810000
+#define XPAR_IIC_1_HIGHADDR 0x4081FFFF
+#define XPAR_IIC_1_TEN_BIT_ADR 0
+#define XPAR_IIC_1_GPO_WIDTH 1
 
 
 /******************************************************************/
@@ -280,6 +297,26 @@
 #define XPAR_SPI_3_USE_STARTUP 0U
 
 
+
+/******************************************************************/
+
+/* Definitions for driver TMRCTR */
+#define XPAR_XTMRCTR_NUM_INSTANCES 1U
+
+/* Definitions for peripheral AXI_TIMER_0 */
+#define XPAR_AXI_TIMER_0_DEVICE_ID 0U
+#define XPAR_AXI_TIMER_0_BASEADDR 0x41C00000U
+#define XPAR_AXI_TIMER_0_HIGHADDR 0x41C0FFFFU
+#define XPAR_AXI_TIMER_0_CLOCK_FREQ_HZ 50000000U
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral AXI_TIMER_0 */
+#define XPAR_TMRCTR_0_DEVICE_ID 0U
+#define XPAR_TMRCTR_0_BASEADDR 0x41C00000U
+#define XPAR_TMRCTR_0_HIGHADDR 0x41C0FFFFU
+#define XPAR_TMRCTR_0_CLOCK_FREQ_HZ XPAR_AXI_TIMER_0_CLOCK_FREQ_HZ
 
 /******************************************************************/
 

@@ -87,7 +87,7 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     DAP_QSPI_XIP_Handler      ; DAPLink board QUAD SPI XIP Handler
                 DCD     DAPLinkFittedn            ; Used as steady state GPIO input, not IRQ
                 DCD     IIC0_Handler              ; IIC 0 Handler
-                DCD     Unused_IRQ9               ; Unused
+                DCD     IIC1_Handler              ; IIC 1 Handler
                 DCD     Unused_IRQ10              ; Unused
                 DCD     Unused_IRQ11              ; Unused
                 DCD     Unused_IRQ12              ; Unused
@@ -186,7 +186,7 @@ Default_Handler PROC
                 EXPORT DAP_QSPI_XIP_Handler       [WEAK]
                 EXPORT DAPLinkFittedn             [WEAK]
                 EXPORT IIC0_Handler               [WEAK]
-                EXPORT Unused_IRQ9                [WEAK]
+                EXPORT IIC1_Handler               [WEAK]
                 EXPORT Unused_IRQ10               [WEAK]
                 EXPORT Unused_IRQ11               [WEAK]
                 EXPORT Unused_IRQ12               [WEAK]
@@ -219,7 +219,7 @@ DAP_SPI0_Handler
 DAP_QSPI_XIP_Handler 
 DAPLinkFittedn   
 IIC0_Handler   
-Unused_IRQ9   
+IIC1_Handler   
 Unused_IRQ10  
 Unused_IRQ11  
 Unused_IRQ12  

@@ -435,6 +435,11 @@
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_sleepcommon.c</FilePath>
             </File>
+            <File>
+              <FileName>xil_sleeptimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_sleeptimer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1095,6 +1100,11 @@
               <FileName>xil_sleepcommon.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_sleepcommon.c</FilePath>
+            </File>
+            <File>
+              <FileName>xil_sleeptimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\xil_sleeptimer.c</FilePath>
             </File>
           </Files>
         </Group>

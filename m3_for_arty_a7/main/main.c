@@ -42,9 +42,6 @@
 
 int main (void)
 {
-    // 
-    u8 ReadBuffer[10];
-
     // Define local variables
     int     status;
     int     DAPLinkFittedn;
@@ -101,7 +98,7 @@ int main (void)
 
     // Enable GPIO Interrupts
     NVIC_EnableIRQ(GPIO0_IRQn);
-    NVIC_EnableIRQ(GPIO1_IRQn);
+    NVIC_DisableIRQ(GPIO1_IRQn); // GPIO1 连接 CMOS_PWDN CMOS_RST
     EnableGPIOInterrupts();
 
     // Enable UART Interrupts
@@ -110,6 +107,7 @@ int main (void)
 
     // Enable IIC Interrupts
     NVIC_EnableIRQ(IIC0_IRQn);
+    NVIC_EnableIRQ(IIC1_IRQn);
 
     // Read the DAPLinkFitted input, (assigned to IRQ[31]).
     // Note the IRQ is never enabled, so polling the pending register will indicate the status
@@ -232,7 +230,11 @@ int main (void)
 
 */
     // print( "Startup complete, entering main interrupt loop\r\n" );
-
+    // 
+    
+    // Temp sensor test
+    Iic1Test();
+    Iic0Test();
 
     // Main loop.  Handle LEDs and switches via interrupt
     while ( 1 )
@@ -242,9 +244,6 @@ int main (void)
         if ( CheckUARTRxBytes() != 0 )
             print ("x");
         */
-        Iic0ReadData(0x0B, ReadBuffer, 1);
-        xil_printf("Temp senser's ID is : %2x\r\n", ReadBuffer[0]);
-        sleep(1000000);
     }
 }
 
