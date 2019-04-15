@@ -58,7 +58,7 @@ int InitialiseUART( void )
     /*
     * Initialize the UartLite driver so that it's ready to use.
     */
-    Status = XUartLite_Initialize(&UART0_instance, XPAR_AXI_UARTLITE_0_DEVICE_ID);
+    Status = XUartLite_Initialize(&UART0_instance, XPAR_UARTLITE_0_DEVICE_ID);
     if (Status != XST_SUCCESS) {
         return XST_FAILURE;
     }

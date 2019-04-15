@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>CORTEX_M3 ARTY_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
+              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\vdma;..\cmos;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -489,6 +489,26 @@
               <FileName>iic.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\iic\iic.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>VDMA</GroupName>
+          <Files>
+            <File>
+              <FileName>vdma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\vdma\vdma.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>CMOS</GroupName>
+          <Files>
+            <File>
+              <FileName>cmos.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\cmos\cmos.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -664,6 +684,41 @@
               <FileName>xiic_stats.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_stats.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Xilinx_VDMA</GroupName>
+          <Files>
+            <File>
+              <FileName>xaxivdma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_channel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_channel.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_intr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_intr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1159,6 +1214,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>VDMA</GroupName>
+          <Files>
+            <File>
+              <FileName>vdma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\vdma\vdma.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>CMOS</GroupName>
+          <Files>
+            <File>
+              <FileName>cmos.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\cmos\cmos.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Xilinx_GPIO</GroupName>
           <Files>
             <File>
@@ -1330,6 +1405,41 @@
               <FileName>xiic_stats.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\iic_v3_4\src\xiic_stats.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Xilinx_VDMA</GroupName>
+          <Files>
+            <File>
+              <FileName>xaxivdma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_channel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_channel.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_intr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_intr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxivdma_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\xaxivdma_sinit.c</FilePath>
             </File>
           </Files>
         </Group>

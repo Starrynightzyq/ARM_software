@@ -1,3 +1,6 @@
+#ifndef __IIC_H__
+#define __IIC_H__
+
 #include "xil_types.h"
 
 int InitialiseIIC( void );
@@ -15,3 +18,5 @@ int Iic1ReadData16(u16 reg, u8 *ReadBuffer, u16 ByteCount);
 
 int Iic0Test(void);
 int Iic1Test(void);
+
+#endif

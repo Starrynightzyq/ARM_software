@@ -53,7 +53,7 @@ int InitialiseGPIO( void )
         return XST_FAILURE;
     }
 
-    status = XGpio_Initialize(&Gpio_Cmos_Ctrl, XPAR_AXI_GPIO_1_DEVICE_ID);
+    status = XGpio_Initialize(&Gpio_Cmos_Ctrl, XPAR_OV_CMOS_AXI_GPIO_1_DEVICE_ID);
     if (status != XST_SUCCESS)  {
         return XST_FAILURE;
     }

@@ -10,4 +10,7 @@ copy /y .\arm_xilinx_file\xiic.h .\m3_for_arty_a7\sdk_workspace\standalone_bsp_0
 @REM - Copy the xil_sleepcommon.c to \standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\
 copy /y .\arm_xilinx_file\xil_sleepcommon.c .\m3_for_arty_a7\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\standalone_v6_7\src\
 
+@REM - Copy the xaxivdma_channel.c to \m3_for_arty_a7\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src\
+copy /y .\arm_xilinx_file\xaxivdma_channel.c .\m3_for_arty_a7\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axivdma_v6_5\src
+
 

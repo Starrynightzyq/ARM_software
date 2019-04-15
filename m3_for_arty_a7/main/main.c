@@ -35,6 +35,8 @@
 #include "uart.h"
 #include "spi.h"
 #include "iic.h"
+#include "vdma.h"
+#include "cmos.h"
 
 //#define SIM_BUILD
 
@@ -57,6 +59,7 @@ int main (void)
     // Specify as volatile to ensure processor reads values back from BRAM
     // and not local storage
     volatile u32 *pBRAMmemory = (u32 *)XPAR_BRAM_0_BASEADDR;
+    volatile u32 *DDRmemory = (u32 *)XPAR_MIG7SERIES_0_BASEADDR;
 
     // CPU ID register
     volatile u32 *pCPUId = (u32 *)0xE000ED00;
@@ -187,6 +190,25 @@ int main (void)
     else
         print( "Bram readback correct\r\n" );
 
+    // Write to DDRmemory
+    for( i=0; i< (sizeof(bram_data)/sizeof(u32)); i++)
+        *DDRmemory++ = bram_data[i];
+    readbackError = 0;
+    // Reset the pointer
+    DDRmemory = (u32 *)XPAR_MIG7SERIES_0_BASEADDR;
+
+    // Readback
+    for( i=0; i< (sizeof(bram_data)/sizeof(u32)); i++)
+    {
+        if ( *DDRmemory++ != bram_data[i] )
+            readbackError++;
+    }
+
+    if ( readbackError )
+        print( "ERROR - DDR readback corrupted.\r\n" );
+    else
+        print( "DDR readback correct\r\n" );
+
 
     // *****************************************************
     // Test the SPI
@@ -234,7 +256,16 @@ int main (void)
     
     // Temp sensor test
     Iic1Test();
-    Iic0Test();
+    // Iic0Test();
+    
+    // Initialize the ov5640 cmos
+    sensor_init();
+
+    // Initialize the VDMA
+    Video_Buffer_Initialize(); // Initialize the video buffer
+    Read_DDR_Config();  // Initialize the VDMA read channel
+    Write_DDR_Config();  // Initialize the VDMA read channel
+    // VDMA_Test();
 
     // Main loop.  Handle LEDs and switches via interrupt
     while ( 1 )

@@ -11,8 +11,8 @@
 #include "xil_printf.h"
 
 // Instance of the IIC, local to this module
-static XIic IIC0_instance; 	// connect to the temp sensor
-static XIic IIC1_instance; 	// connect to the cmos sensor
+static XIic IIC0_instance; 	// connect to the cmos sensor
+static XIic IIC1_instance; 	// connect to the temp sensor
 
 #define TEMP_ADDRESS	0x4B	 /* 0x4B 7 bit number */
 #define CMOS_ADDRESS	0X3C	/* 7 bit ov5640 address */
@@ -22,8 +22,8 @@ volatile typedef struct {
 	u8 ReceiveComplete;	/* Flag to check completion of Reception */
 } HandlerInfo;
 
-HandlerInfo IIC0_HandlerInfo;
-HandlerInfo IIC1_HandlerInfo;
+HandlerInfo IIC0_HandlerInfo; /* ov5640 */
+HandlerInfo IIC1_HandlerInfo; /* temp sensor */
 
 static void Iic0SendHandler(XIic *InstancePtr);
 static void Iic0ReceiveHandler(XIic *InstancePtr);
@@ -43,11 +43,11 @@ int InitialiseIIC( void )
 	/*
 	* Initialize the IIC driver so that it's ready to use.
 	*/
-	Status = XIic_Initialize(&IIC0_instance, XPAR_IIC_0_DEVICE_ID);
+	Status = XIic_Initialize(&IIC0_instance, XPAR_IIC_1_DEVICE_ID);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
-	Status = XIic_Initialize(&IIC1_instance, XPAR_IIC_1_DEVICE_ID);
+	Status = XIic_Initialize(&IIC1_instance, XPAR_IIC_0_DEVICE_ID);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
