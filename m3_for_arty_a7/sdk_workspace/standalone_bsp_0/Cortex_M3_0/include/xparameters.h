@@ -418,6 +418,25 @@
 
 /******************************************************************/
 
+/* Definitions for driver THRESHOLD2_TOP */
+#define XPAR_XTHRESHOLD2_NUM_INSTANCES 1
+
+/* Definitions for peripheral OV_CMOS_THRESHOLD2_0 */
+#define XPAR_OV_CMOS_THRESHOLD2_0_DEVICE_ID 0
+#define XPAR_OV_CMOS_THRESHOLD2_0_S_AXI_CONTROL_BUS_BASEADDR 0x44A10000
+#define XPAR_OV_CMOS_THRESHOLD2_0_S_AXI_CONTROL_BUS_HIGHADDR 0x44A1FFFF
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral OV_CMOS_THRESHOLD2_0 */
+#define XPAR_XTHRESHOLD2_0_DEVICE_ID XPAR_OV_CMOS_THRESHOLD2_0_DEVICE_ID
+#define XPAR_XTHRESHOLD2_0_S_AXI_CONTROL_BUS_BASEADDR 0x44A10000
+#define XPAR_XTHRESHOLD2_0_S_AXI_CONTROL_BUS_HIGHADDR 0x44A1FFFF
+
+
+/******************************************************************/
+
 /* Definitions for driver TMRCTR */
 #define XPAR_XTMRCTR_NUM_INSTANCES 1U
 

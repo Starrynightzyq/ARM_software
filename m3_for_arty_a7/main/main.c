@@ -37,6 +37,7 @@
 #include "iic.h"
 #include "vdma.h"
 #include "cmos.h"
+#include "image.h"
 
 //#define SIM_BUILD
 
@@ -257,6 +258,9 @@ int main (void)
     // Temp sensor test
     Iic1Test();
     // Iic0Test();
+    // 
+    // 
+    Initialize_image_process();
     
     // Initialize the ov5640 cmos
     sensor_init();
