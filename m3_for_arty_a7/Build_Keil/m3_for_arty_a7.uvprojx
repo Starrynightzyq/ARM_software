@@ -10,13 +10,13 @@
       <TargetName>m3_for_arty_a7</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ARMCM3</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.0.1</PackID>
+          <PackID>ARM.CMSIS.5.4.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M3") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -184,6 +184,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -324,6 +325,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -738,22 +740,65 @@
             <File>
               <FileName>xthreshold2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_0\src\xthreshold2.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_0\src\xthreshold2_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_linux.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_0\src\xthreshold2_linux.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_linux.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_0\src\xthreshold2_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>hls_saturation_enhance</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Image_Porjection</GroupName>
+          <Files>
+            <File>
+              <FileName>Projection.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\Projection_v1_0\src\Projection.c</FilePath>
+            </File>
+            <File>
+              <FileName>Projection_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\Projection_v1_0\src\Projection_selftest.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Xilinx_Switch</GroupName>
+          <Files>
+            <File>
+              <FileName>xaxis_switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -772,7 +817,7 @@
         <TargetCommonOption>
           <Device>ARMCM0</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.0.1</PackID>
+          <PackID>ARM.CMSIS.5.4.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M0") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -940,6 +985,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -1080,6 +1126,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -1494,22 +1541,65 @@
             <File>
               <FileName>xthreshold2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_0\src\xthreshold2.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_0\src\xthreshold2_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_linux.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_0\src\xthreshold2_linux.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_linux.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_0\src\xthreshold2_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>hls_saturation_enhance</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Image_Porjection</GroupName>
+          <Files>
+            <File>
+              <FileName>Projection.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\Projection_v1_0\src\Projection.c</FilePath>
+            </File>
+            <File>
+              <FileName>Projection_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\Projection_v1_0\src\Projection_selftest.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Xilinx_Switch</GroupName>
+          <Files>
+            <File>
+              <FileName>xaxis_switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_sinit.c</FilePath>
             </File>
           </Files>
         </Group>

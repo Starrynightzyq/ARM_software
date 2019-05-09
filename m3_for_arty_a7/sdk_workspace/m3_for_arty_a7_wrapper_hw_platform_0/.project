@@ -11,7 +11,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1552987297901</id>
+			<id>1556285793333</id>
 			<name></name>
 			<type>6</type>
 			<matcher>
@@ -20,7 +20,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1552987297905</id>
+			<id>1556285793339</id>
 			<name></name>
 			<type>6</type>
 			<matcher>
@@ -29,88 +29,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1552987297908</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-*.hwh</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1555063819043</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-*.xml</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1555063819047</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-*.svd</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1555063819051</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-*.hwh</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1555122794336</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-*.xml</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1555122794340</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-*.svd</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1555122794343</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-*.hwh</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1555233741338</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-*.xml</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1555233741345</id>
-			<name></name>
-			<type>6</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-*.svd</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1555233741351</id>
+			<id>1556285793344</id>
 			<name></name>
 			<type>6</type>
 			<matcher>

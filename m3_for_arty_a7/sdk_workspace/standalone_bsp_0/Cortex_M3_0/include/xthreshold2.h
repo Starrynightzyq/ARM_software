@@ -89,6 +89,14 @@ void XThreshold2_SetMax_h(XThreshold2 *InstancePtr, u32 Data);
 u32 XThreshold2_GetMax_h(XThreshold2 *InstancePtr);
 void XThreshold2_SetMin_h(XThreshold2 *InstancePtr, u32 Data);
 u32 XThreshold2_GetMin_h(XThreshold2 *InstancePtr);
+void XThreshold2_SetMax_s(XThreshold2 *InstancePtr, u32 Data);
+u32 XThreshold2_GetMax_s(XThreshold2 *InstancePtr);
+void XThreshold2_SetMin_s(XThreshold2 *InstancePtr, u32 Data);
+u32 XThreshold2_GetMin_s(XThreshold2 *InstancePtr);
+void XThreshold2_SetMax_v(XThreshold2 *InstancePtr, u32 Data);
+u32 XThreshold2_GetMax_v(XThreshold2 *InstancePtr);
+void XThreshold2_SetMin_v(XThreshold2 *InstancePtr, u32 Data);
+u32 XThreshold2_GetMin_v(XThreshold2 *InstancePtr);
 
 #ifdef __cplusplus
 }

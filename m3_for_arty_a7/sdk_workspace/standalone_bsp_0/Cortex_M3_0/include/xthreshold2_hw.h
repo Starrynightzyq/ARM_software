@@ -22,6 +22,18 @@
 // 0x28 : reserved
 // 0x2c : Data signal of min_h
 //        bit 31~0 - min_h[31:0] (Read/Write)
+// 0x30 : reserved
+// 0x34 : Data signal of max_s
+//        bit 31~0 - max_s[31:0] (Read/Write)
+// 0x38 : reserved
+// 0x3c : Data signal of min_s
+//        bit 31~0 - min_s[31:0] (Read/Write)
+// 0x40 : reserved
+// 0x44 : Data signal of max_v
+//        bit 31~0 - max_v[31:0] (Read/Write)
+// 0x48 : reserved
+// 0x4c : Data signal of min_v
+//        bit 31~0 - min_v[31:0] (Read/Write)
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 #define XTHRESHOLD2_CONTROL_BUS_ADDR_ROWS_DATA  0x14
@@ -32,4 +44,12 @@
 #define XTHRESHOLD2_CONTROL_BUS_BITS_MAX_H_DATA 32
 #define XTHRESHOLD2_CONTROL_BUS_ADDR_MIN_H_DATA 0x2c
 #define XTHRESHOLD2_CONTROL_BUS_BITS_MIN_H_DATA 32
+#define XTHRESHOLD2_CONTROL_BUS_ADDR_MAX_S_DATA 0x34
+#define XTHRESHOLD2_CONTROL_BUS_BITS_MAX_S_DATA 32
+#define XTHRESHOLD2_CONTROL_BUS_ADDR_MIN_S_DATA 0x3c
+#define XTHRESHOLD2_CONTROL_BUS_BITS_MIN_S_DATA 32
+#define XTHRESHOLD2_CONTROL_BUS_ADDR_MAX_V_DATA 0x44
+#define XTHRESHOLD2_CONTROL_BUS_BITS_MAX_V_DATA 32
+#define XTHRESHOLD2_CONTROL_BUS_ADDR_MIN_V_DATA 0x4c
+#define XTHRESHOLD2_CONTROL_BUS_BITS_MIN_V_DATA 32
 
