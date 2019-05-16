@@ -267,8 +267,10 @@ int main (void)
 
     // Initialize the VDMA
     Video_Buffer_Initialize(); // Initialize the video buffer
-    Read_DDR_Config();  // Initialize the VDMA read channel
-    Write_DDR_Config();  // Initialize the VDMA read channel
+    VDMA_Config();
+		
+    // Write_DDR_Config();  // Initialize the VDMA read channel
+    // Read_DDR_Config();  // Initialize the VDMA read channel
     // VDMA_Test();
 
     // Main loop.  Handle LEDs and switches via interrupt
@@ -279,6 +281,8 @@ int main (void)
         if ( CheckUARTRxBytes() != 0 )
             print ("x");
         */
+       // sleep(10);
+       // xil_printf("1s\r\n");
     }
 }
 

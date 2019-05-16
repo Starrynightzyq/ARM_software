@@ -275,7 +275,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x8000</Size>
+                <Size>0xf000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -501,6 +501,11 @@
               <FileName>vdma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\vdma\vdma.c</FilePath>
+            </File>
+            <File>
+              <FileName>vdma_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\vdma\vdma_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -748,11 +753,6 @@
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
-              <FileName>xthreshold2_linux.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_linux.c</FilePath>
-            </File>
-            <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_sinit.c</FilePath>
@@ -779,28 +779,6 @@
         </Group>
         <Group>
           <GroupName>Xilinx_Switch</GroupName>
-          <Files>
-            <File>
-              <FileName>xaxis_switch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch.c</FilePath>
-            </File>
-            <File>
-              <FileName>xaxis_switch_g.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_g.c</FilePath>
-            </File>
-            <File>
-              <FileName>xaxis_switch_selftest.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_selftest.c</FilePath>
-            </File>
-            <File>
-              <FileName>xaxis_switch_sinit.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_sinit.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -1303,6 +1281,11 @@
               <FileType>1</FileType>
               <FilePath>..\vdma\vdma.c</FilePath>
             </File>
+            <File>
+              <FileName>vdma_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\vdma\vdma_driver.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1549,11 +1532,6 @@
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
-              <FileName>xthreshold2_linux.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_linux.c</FilePath>
-            </File>
-            <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_sinit.c</FilePath>
@@ -1580,28 +1558,6 @@
         </Group>
         <Group>
           <GroupName>Xilinx_Switch</GroupName>
-          <Files>
-            <File>
-              <FileName>xaxis_switch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch.c</FilePath>
-            </File>
-            <File>
-              <FileName>xaxis_switch_g.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_g.c</FilePath>
-            </File>
-            <File>
-              <FileName>xaxis_switch_selftest.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_selftest.c</FilePath>
-            </File>
-            <File>
-              <FileName>xaxis_switch_sinit.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_sinit.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>

@@ -5,7 +5,7 @@
 
 struct reginfo sensor_init_data[] =
 {
-	{0x3103, 0x11}, // system clock from pad, bit[1]
+/*	{0x3103, 0x11}, // system clock from pad, bit[1]
 	{0x3008, 0x82}, // software reset, bit[7]// delay 5ms
 	{0x3008, 0x42}, // software power down, bit[6]
 	{0x3103, 0x03}, // system clock from PLL, bit[1]
@@ -307,7 +307,7 @@ struct reginfo sensor_init_data[] =
 	{0x3503, 0x00}, // AEC/AGC on
 	{0x3016, 0x02}, //Strobe output enable
 	{0x3b07, 0x0a}, //FREX strobe mode1
-
+*/
 	{SEQUENCE_END, 0x00}
 };
 
@@ -625,7 +625,7 @@ struct reginfo ov5640_init_data[] =
 	{0x3028, 0x00},
 	{0x3029, 0xFF},
 	{0x3000, 0x00},
-	
+
 	{SEQUENCE_END, 0x00}
 };
 

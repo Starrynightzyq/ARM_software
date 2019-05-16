@@ -14,7 +14,9 @@ extern "C" {
 
 int Initialize_image_process(void);
 
+#if defined(XPAR_AXIS_SWITCH_0_DEVICE_ID) || defined(XPAR_AXIS_SWITCH_1_DEVICE_ID)
 int AxisSwitch_Choose(XAxis_Switch *XAxis_Switch, u8 MiIndex, u8 SiIndex);
+#endif
 
 #ifdef __cplusplus
 }

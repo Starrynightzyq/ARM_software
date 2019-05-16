@@ -10,7 +10,7 @@
 #include "xhls_saturation_enhance.h"
 #endif
 
-#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_PROJECTION_1_DEVICE_ID
+#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_PROJECTION_0_DEVICE_ID
 #include "Projection.h"
 #endif
 
@@ -79,15 +79,21 @@ int Initialize_image_process(void)
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
+	else {
+		xil_printf("Initialize the XThreshold2 successfully\r\n");
+	}
 
 	XThreshold2_SetRows(&Threshold, 480);  // 480
 	XThreshold2_SetCols(&Threshold, 640);  // 640
-	XThreshold2_SetMax_h(&Threshold, 255); // 100
-	XThreshold2_SetMin_h(&Threshold, 0);  // 60
+	
+	XThreshold2_SetMax_h(&Threshold, 100); // 100
+	XThreshold2_SetMin_h(&Threshold, 60);  // 60
+	
 	XThreshold2_SetMax_s(&Threshold, 255); // 255
-	XThreshold2_SetMin_s(&Threshold, 10);  // 20
+	XThreshold2_SetMin_s(&Threshold, 20);  // 20
+	
 	XThreshold2_SetMax_v(&Threshold, 255); // 255
-	XThreshold2_SetMin_v(&Threshold, 10); // 150
+	XThreshold2_SetMin_v(&Threshold, 100); // 150
 #endif
 
 #ifdef XPAR_XHLS_SATURATION_ENHANCE_0_DEVICE_ID
@@ -101,16 +107,17 @@ int Initialize_image_process(void)
 	XHls_saturation_enhance_Set_sat(&Saturation_Enhance, 0);
 #endif
 
-#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_PROJECTION_1_DEVICE_ID
-	PROJECTION_mWriteReg(XPAR_OV_CMOS_IMAGE_PROCESS_PROJECTION_1_CTRL_AXI_BASEADDR, 
+#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_PROJECTION_0_DEVICE_ID
+	PROJECTION_mWriteReg(XPAR_OV_CMOS_IMAGE_PROCESS_PROJECTION_0_DEVICE_ID, 
 		PROJECTION_Ctrl_AXI_SLV_REG0_OFFSET, 100); // thresh_width_h
-	PROJECTION_mWriteReg(XPAR_OV_CMOS_IMAGE_PROCESS_PROJECTION_1_CTRL_AXI_BASEADDR, 
+	PROJECTION_mWriteReg(XPAR_OV_CMOS_IMAGE_PROCESS_PROJECTION_0_DEVICE_ID, 
 		PROJECTION_Ctrl_AXI_SLV_REG1_OFFSET, 100); // thresh_width_v
 #endif
 
-	return XST_SUCCESS;
+	return 0;
 }
 
+#if defined(XPAR_AXIS_SWITCH_0_DEVICE_ID) || defined(XPAR_AXIS_SWITCH_1_DEVICE_ID)
 int AxisSwitch_Choose(XAxis_Switch *AxisSwitch, u8 MiIndex, u8 SiIndex)
 {
 	int Status;
@@ -148,3 +155,4 @@ int AxisSwitch_Choose(XAxis_Switch *AxisSwitch, u8 MiIndex, u8 SiIndex)
 
 	return XST_SUCCESS;
 }
+#endif
