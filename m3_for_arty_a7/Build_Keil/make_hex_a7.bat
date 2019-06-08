@@ -39,8 +39,8 @@ call fromelf --bin        --output qspi_a7.bin objects\m3_for_arty_a7.axf
 @REM - Copy the files to the relevant directories of the hardware project
 copy bram_a7.* ..\..\..\hardware\m3_for_arty_a7\m3_for_arty_a7
 copy qspi_a7.hex ..\..\..\hardware\m3_for_arty_a7\testbench
-rem copy bram_a7.* ..\..\..\hardware_c\m3_for_arty_a7\m3_for_arty_a7
-rem copy qspi_a7.hex ..\..\..\hardware_c\m3_for_arty_a7\testbench
+copy bram_a7.* ..\..\..\hardware_t\m3_for_arty_a7\m3_for_arty_a7
+copy qspi_a7.hex ..\..\..\hardware_t\m3_for_arty_a7\testbench
 
 
 

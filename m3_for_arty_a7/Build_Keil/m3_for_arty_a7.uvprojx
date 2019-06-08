@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>CORTEX_M3 ARTY_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\vdma;..\cmos;..\image;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
+              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\vdma;..\cmos;..\image;..\timer;..\lcd;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -466,13 +466,6 @@
         </Group>
         <Group>
           <GroupName>SPI</GroupName>
-          <Files>
-            <File>
-              <FileName>spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\spi\spi.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>UART</GroupName>
@@ -526,6 +519,26 @@
               <FileName>image.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\image\image.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>TIMER</GroupName>
+          <Files>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\timer\timer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>LCD</GroupName>
+          <Files>
+            <File>
+              <FileName>spi_my.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lcd\spi_my.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -740,45 +753,189 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Xilinx_TIMER</GroupName>
+          <Files>
+            <File>
+              <FileName>xtmrctr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_intr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_intr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_l.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_l.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_options.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_options.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_sinit.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_stats.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_stats.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>HLS_Threshold2</GroupName>
           <Files>
             <File>
               <FileName>xthreshold2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>hls_saturation_enhance</GroupName>
-        </Group>
-        <Group>
-          <GroupName>Image_Porjection</GroupName>
+          <GroupName>HLS_Projection1</GroupName>
           <Files>
             <File>
-              <FileName>Projection.c</FileName>
+              <FileName>xprojection1_hls.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\Projection_v1_0\src\Projection.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_3\src\xprojection1_hls.c</FilePath>
             </File>
             <File>
-              <FileName>Projection_selftest.c</FileName>
+              <FileName>xprojection1_hls_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\Projection_v1_0\src\Projection_selftest.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_3\src\xprojection1_hls_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xprojection1_hls_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_3\src\xprojection1_hls_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Xilinx_Switch</GroupName>
+          <GroupName>HLS_Mask</GroupName>
+          <Files>
+            <File>
+              <FileName>xmask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_2\src\xmask.c</FilePath>
+            </File>
+            <File>
+              <FileName>xmask_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_2\src\xmask_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xmask_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_2\src\xmask_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HLS_Projection_mul</GroupName>
+          <Files>
+            <File>
+              <FileName>xprojection_mul_hls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_0\src\xprojection_mul_hls.c</FilePath>
+            </File>
+            <File>
+              <FileName>xprojection_mul_hls_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_0\src\xprojection_mul_hls_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xprojection_mul_hls_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_0\src\xprojection_mul_hls_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HLS_Resize</GroupName>
+          <Files>
+            <File>
+              <FileName>xresize_hls_axis.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_0\src\xresize_hls_axis.c</FilePath>
+            </File>
+            <File>
+              <FileName>xresize_hls_axis_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_0\src\xresize_hls_axis_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xresize_hls_axis_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_0\src\xresize_hls_axis_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HLS_Contrast</GroupName>
+          <Files>
+            <File>
+              <FileName>xcontrast_hls_rom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_3\src\xcontrast_hls_rom.c</FilePath>
+            </File>
+            <File>
+              <FileName>xcontrast_hls_rom_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_3\src\xcontrast_hls_rom_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xcontrast_hls_rom_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_3\src\xcontrast_hls_rom_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HLS_Drawlines</GroupName>
+          <Files>
+            <File>
+              <FileName>xdraw_line_hls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls.c</FilePath>
+            </File>
+            <File>
+              <FileName>xdraw_line_hls_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xdraw_line_hls_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_sinit.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -1245,13 +1402,6 @@
         </Group>
         <Group>
           <GroupName>SPI</GroupName>
-          <Files>
-            <File>
-              <FileName>spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\spi\spi.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>UART</GroupName>
@@ -1305,6 +1455,26 @@
               <FileName>image.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\image\image.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>TIMER</GroupName>
+          <Files>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\timer\timer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>LCD</GroupName>
+          <Files>
+            <File>
+              <FileName>spi_my.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lcd\spi_my.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1519,45 +1689,189 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Xilinx_TIMER</GroupName>
+          <Files>
+            <File>
+              <FileName>xtmrctr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_intr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_intr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_l.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_l.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_options.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_options.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_sinit.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtmrctr_stats.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\tmrctr_v4_4\src\xtmrctr_stats.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>HLS_Threshold2</GroupName>
           <Files>
             <File>
               <FileName>xthreshold2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_top_v1_2\src\xthreshold2_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>hls_saturation_enhance</GroupName>
-        </Group>
-        <Group>
-          <GroupName>Image_Porjection</GroupName>
+          <GroupName>HLS_Projection1</GroupName>
           <Files>
             <File>
-              <FileName>Projection.c</FileName>
+              <FileName>xprojection1_hls.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\Projection_v1_0\src\Projection.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_3\src\xprojection1_hls.c</FilePath>
             </File>
             <File>
-              <FileName>Projection_selftest.c</FileName>
+              <FileName>xprojection1_hls_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\Projection_v1_0\src\Projection_selftest.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_3\src\xprojection1_hls_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xprojection1_hls_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_3\src\xprojection1_hls_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Xilinx_Switch</GroupName>
+          <GroupName>HLS_Mask</GroupName>
+          <Files>
+            <File>
+              <FileName>xmask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_2\src\xmask.c</FilePath>
+            </File>
+            <File>
+              <FileName>xmask_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_2\src\xmask_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xmask_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_2\src\xmask_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HLS_Projection_mul</GroupName>
+          <Files>
+            <File>
+              <FileName>xprojection_mul_hls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_0\src\xprojection_mul_hls.c</FilePath>
+            </File>
+            <File>
+              <FileName>xprojection_mul_hls_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_0\src\xprojection_mul_hls_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xprojection_mul_hls_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_0\src\xprojection_mul_hls_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HLS_Resize</GroupName>
+          <Files>
+            <File>
+              <FileName>xresize_hls_axis.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_0\src\xresize_hls_axis.c</FilePath>
+            </File>
+            <File>
+              <FileName>xresize_hls_axis_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_0\src\xresize_hls_axis_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xresize_hls_axis_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_0\src\xresize_hls_axis_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HLS_Contrast</GroupName>
+          <Files>
+            <File>
+              <FileName>xcontrast_hls_rom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_3\src\xcontrast_hls_rom.c</FilePath>
+            </File>
+            <File>
+              <FileName>xcontrast_hls_rom_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_3\src\xcontrast_hls_rom_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xcontrast_hls_rom_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_3\src\xcontrast_hls_rom_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HLS_Drawlines</GroupName>
+          <Files>
+            <File>
+              <FileName>xdraw_line_hls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls.c</FilePath>
+            </File>
+            <File>
+              <FileName>xdraw_line_hls_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xdraw_line_hls_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_sinit.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>

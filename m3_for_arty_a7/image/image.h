@@ -8,15 +8,23 @@ extern "C" {
 #include "xparameters.h"
 #include "xil_types.h"
 
-#if defined(XPAR_AXIS_SWITCH_0_DEVICE_ID) || defined(XPAR_AXIS_SWITCH_1_DEVICE_ID)
-#include "xaxis_switch.h"
-#endif
+#define CHAR_INDEX_CHANNEL 1
+#define CHAR_DIFF_CHANNEL 2
+
+#define IMAGE_ROWS 480
+#define IMAGE_COLS 640
+
+#define FRAME_NUM 5    // 帧数最大值
+#define CHAR_NUM 8      // 车牌中字的个数
+#define POINT_MAX_DIFF 70 // 车牌中点的最大差值
 
 int Initialize_image_process(void);
 
-#if defined(XPAR_AXIS_SWITCH_0_DEVICE_ID) || defined(XPAR_AXIS_SWITCH_1_DEVICE_ID)
-int AxisSwitch_Choose(XAxis_Switch *XAxis_Switch, u8 MiIndex, u8 SiIndex);
-#endif
+int Image_Interrupt_setup(void);
+
+void plate_fsm(void);
+
+void show_plate(void);
 
 #ifdef __cplusplus
 }

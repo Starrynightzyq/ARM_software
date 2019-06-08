@@ -38,9 +38,12 @@
 #include "vdma.h"
 #include "cmos.h"
 #include "image.h"
+#include "timer.h"
+#include "spi_my.h"
 
 //#define SIM_BUILD
-
+// #define DEBUG
+// #define DDR_TEST
 /*******************************************************************/
 
 int main (void)
@@ -55,12 +58,6 @@ int main (void)
     // Illegal location
     volatile u32 emptyLoc;
     volatile u32 QSPIbase;
-    
-    // BRAM base
-    // Specify as volatile to ensure processor reads values back from BRAM
-    // and not local storage
-    volatile u32 *pBRAMmemory = (u32 *)XPAR_BRAM_0_BASEADDR;
-    volatile u32 *DDRmemory = (u32 *)XPAR_MIG7SERIES_0_BASEADDR;
 
     // CPU ID register
     volatile u32 *pCPUId = (u32 *)0xE000ED00;
@@ -77,19 +74,17 @@ int main (void)
     u32 *pIllegalAddr = (u32 *)0x40200000;
 */
 
-
-    // Test data for SPI
-    u8 spi_tx_data[8] = {0x01,0x23,0x45,0x67,0x89,0xab,0xcd,0xef};
-    u8 spi_rx_data[8] = {0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff};
-    
-    // Test data for BRAM
-    u32 bram_data[8] = {0x01234567, 0x89abcdef, 0xdeadbeef, 0xfeebdaed, 0xa5f03ca5, 0x87654321, 0xfedc0ba9, 0x01020408};
-
+//    xil_printf("start the program\r\n");
     // Initialise the UART
     InitialiseUART();
 
     // Initialise the IIC
+#ifndef DEBUG
     InitialiseIIC();  
+#endif
+
+    // Initialize the LCD SPI controler
+    Lcd_Spi_Initialize();
 
     // Clear all interrupts
     NVIC_ClearAllPendingIRQ();
@@ -102,7 +97,7 @@ int main (void)
 
     // Enable GPIO Interrupts
     NVIC_EnableIRQ(GPIO0_IRQn);
-    NVIC_DisableIRQ(GPIO1_IRQn); // GPIO1 连接 CMOS_PWDN CMOS_RST
+    // NVIC_DisableIRQ(GPIO1_IRQn); // GPIO1 连接 CMOS_PWDN CMOS_RST
     EnableGPIOInterrupts();
 
     // Enable UART Interrupts
@@ -111,22 +106,15 @@ int main (void)
 
     // Enable IIC Interrupts
     NVIC_EnableIRQ(IIC0_IRQn);
-    NVIC_EnableIRQ(IIC1_IRQn);
+    // NVIC_DisableIRQ(IIC1_IRQn);
+
+    // Enable SPI Interrupts
+    NVIC_EnableIRQ(LCD_SPI_IRQn);
 
     // Read the DAPLinkFitted input, (assigned to IRQ[31]).
     // Note the IRQ is never enabled, so polling the pending register will indicate the status
     NVIC_DisableIRQ(DAPLinkFittedn_IRQn);
     DAPLinkFittedn = NVIC_GetPendingIRQ( DAPLinkFittedn_IRQn );
-
-
-    // Initialise the SPI
-    status = InitialiseSPI(DAPLinkFittedn);
-    if (status != XST_SUCCESS)  {
-        print("Error - Xilinx SPI controllers failed to initialise\n");
-    }
-
-    DisableSPIInterrupts();
-
 
     // Set DAPLink QSPI to the normal read-write controller
     // Do NOT do this for code running from the DAPLink QSPI.  This will switch from the XIP QSPI
@@ -162,36 +150,16 @@ int main (void)
     else
         print ("\nV2C-DAPLink board detected\r\n");
     print ("Use DIP switches and push buttons to\r\ncontrol LEDS\r\n");
-    print (" Version 1.1\r\n");
+    print (" Version 2.0\r\n");
     print ("************************************\r\n");
 #else
     print ( debugStr );
 #endif    
 
     // *****************************************************
-    // Test the BRAM
+    // Test the DDRmemory
     // *****************************************************
-    
-    // Write to BRAM
-    for( i=0; i< (sizeof(bram_data)/sizeof(u32)); i++)
-        *pBRAMmemory++ = bram_data[i];
-    readbackError = 0;
-    // Reset the pointer
-    pBRAMmemory = (u32 *)XPAR_BRAM_0_BASEADDR;
-
-    // Readback
-    for( i=0; i< (sizeof(bram_data)/sizeof(u32)); i++)
-    {
-        if ( *pBRAMmemory++ != bram_data[i] )
-            readbackError++;
-    }
-
-    if ( readbackError )
-        print( "ERROR - Bram readback corrupted.\r\n" );
-    else
-        print( "Bram readback correct\r\n" );
-
-    // Write to DDRmemory
+#ifdef DDR_TEST
     for( i=0; i< (sizeof(bram_data)/sizeof(u32)); i++)
         *DDRmemory++ = bram_data[i];
     readbackError = 0;
@@ -209,71 +177,32 @@ int main (void)
         print( "ERROR - DDR readback corrupted.\r\n" );
     else
         print( "DDR readback correct\r\n" );
+#endif
 
-
-    // *****************************************************
-    // Test the SPI
-    // *****************************************************
-    
-    // Initialise the base QSPI to the correct mode
-    status = InitQSPIBaseFlash();
-    status = WriteQSPIBaseFlash( spi_tx_data, sizeof(spi_tx_data)/sizeof(u8), 0x0 );
-    status = ReadQSPIBaseFlash ( spi_rx_data, sizeof(spi_rx_data)/sizeof(u8), 0x0 );
-
-
-    // Manually type out, print does work when called back to back from a loop
-/*
-    sprintf( debugStr, "%x %x %x %x %x %x %x %x\r\n", spi_rx_data[0], spi_rx_data[1], spi_rx_data[2], spi_rx_data[3], 
-                                                   spi_rx_data[4], spi_rx_data[5], spi_rx_data[6], spi_rx_data[7] );
-    print( debugStr );
-*/    
-    // Compare buffers
-    readbackError = 0;
-    for( i=0; i<(sizeof(spi_rx_data)/sizeof(u8)); i++ )
-    {
-        if( spi_rx_data[i] != spi_tx_data[i] )
-            readbackError++;
-    }
-
-    if ( readbackError )
-        print( "ERROR - Base SPI readback corrupted.\r\n" );
-    else
-        print( "Base SPI readback correct\r\n" );
-   
-
-    // ******************************************************
-    // Test exceptions.  Write to legal and illegal addresses
-    // ******************************************************
-/*    
-    // Do an access to an legal location
-    emptyLoc = *pLegalAddr;
-
-    // Do an access to an illegal location
-    emptyLoc = *pIllegalAddr;
-
-*/
-    // print( "Startup complete, entering main interrupt loop\r\n" );
-    // 
-    
-    // Temp sensor test
-    Iic1Test();
-    // Iic0Test();
-    // 
-    // 
+#ifndef DEBUG
     Initialize_image_process();
+    Image_Interrupt_setup();
+#endif
     
     // Initialize the ov5640 cmos
+#ifndef DEBUG
     sensor_init();
+#endif
 
     // Initialize the VDMA
+#ifndef DEBUG
     Video_Buffer_Initialize(); // Initialize the video buffer
     VDMA_Config();
-		
-    // Write_DDR_Config();  // Initialize the VDMA read channel
-    // Read_DDR_Config();  // Initialize the VDMA read channel
-    // VDMA_Test();
+#endif
+
+    // timer 0 initialize
+    Timer0_Initialise(50000000);
+    // EnableTIMER0Interrupts();
+    DisableTIMER0Interrupts();
 
     // Main loop.  Handle LEDs and switches via interrupt
+    xil_printf("Initialize all successful, start the main loop\r\n");
+    xil_printf("test start\r\n");
     while ( 1 )
     {
         /* Main loop. Wait for interrupts to occur */
@@ -283,6 +212,11 @@ int main (void)
         */
        // sleep(10);
        // xil_printf("1s\r\n");
+        
+       // test spi send
+       // Lcd_Spi_Write_Byte(0x5a);
+       plate_fsm();
+       show_plate();
     }
 }
 

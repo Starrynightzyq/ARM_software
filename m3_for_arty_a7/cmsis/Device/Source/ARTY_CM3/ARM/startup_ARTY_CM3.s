@@ -80,16 +80,16 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 ; External Interrupts
                 DCD     UART0_Handler             ; UART 0 Handler
                 DCD     GPIO0_Handler             ; GPIO 0 Handler
-                DCD     GPIO1_Handler             ; GPIO 1 Handler
-                DCD     QSPI0_Handler             ; QUAD SPI 0 (Arty board) Handler
-                DCD     DAP_QSPI0_Handler         ; DAPLink board QUAD SPI 0 Handler
-                DCD     DAP_SPI0_Handler          ; DAPLink board SPI 0 Handler
-                DCD     DAP_QSPI_XIP_Handler      ; DAPLink board QUAD SPI XIP Handler
+                DCD     XResize_Handler           ; Image process resize Handler
+                DCD     XContrast_Handler         ; Image process contrast Handler
+                DCD     XSort_Handler             ; Image process sort Handler
+                DCD     Unused_IRQ5               ; Unused
+                DCD     Unused_IRQ6               ; Unused
                 DCD     DAPLinkFittedn            ; Used as steady state GPIO input, not IRQ
                 DCD     IIC0_Handler              ; IIC 0 Handler
-                DCD     IIC1_Handler              ; IIC 1 Handler
-                DCD     Unused_IRQ10              ; Unused
-                DCD     Unused_IRQ11              ; Unused
+                DCD     Unused_IRQ9               ; Unused
+                DCD     Timer0_Handler            ; TIMER 0 Handler
+                DCD     Lcd_Spi_Handler           ; SPI 0 (LCD) Handler
                 DCD     Unused_IRQ12              ; Unused
                 DCD     Unused_IRQ13              ; Unused
                 DCD     Unused_IRQ14              ; Unused
@@ -179,16 +179,16 @@ SysTick_Handler\
 Default_Handler PROC
                 EXPORT UART0_Handler              [WEAK]
                 EXPORT GPIO0_Handler              [WEAK]
-                EXPORT GPIO1_Handler              [WEAK]
-                EXPORT QSPI0_Handler              [WEAK]
-                EXPORT DAP_QSPI0_Handler          [WEAK]
-                EXPORT DAP_SPI0_Handler           [WEAK]
-                EXPORT DAP_QSPI_XIP_Handler       [WEAK]
+                EXPORT XResize_Handler            [WEAK]
+                EXPORT XContrast_Handler          [WEAK]
+                EXPORT XSort_Handler              [WEAK]
+                EXPORT Unused_IRQ5                [WEAK]
+                EXPORT Unused_IRQ6                [WEAK]
                 EXPORT DAPLinkFittedn             [WEAK]
                 EXPORT IIC0_Handler               [WEAK]
-                EXPORT IIC1_Handler               [WEAK]
-                EXPORT Unused_IRQ10               [WEAK]
-                EXPORT Unused_IRQ11               [WEAK]
+                EXPORT Unused_IRQ9                [WEAK]
+                EXPORT Timer0_Handler             [WEAK]
+                EXPORT Lcd_Spi_Handler            [WEAK]
                 EXPORT Unused_IRQ12               [WEAK]
                 EXPORT Unused_IRQ13               [WEAK]
                 EXPORT Unused_IRQ14               [WEAK]
@@ -212,16 +212,16 @@ Default_Handler PROC
 
 UART0_Handler
 GPIO0_Handler
-GPIO1_Handler
-QSPI0_Handler 
-DAP_QSPI0_Handler 
-DAP_SPI0_Handler  
-DAP_QSPI_XIP_Handler 
+XResize_Handler
+XContrast_Handler 
+XSort_Handler 
+Unused_IRQ5  
+Unused_IRQ6 
 DAPLinkFittedn   
 IIC0_Handler   
-IIC1_Handler   
-Unused_IRQ10  
-Unused_IRQ11  
+Unused_IRQ9   
+Timer0_Handler  
+Lcd_Spi_Handler  
 Unused_IRQ12  
 Unused_IRQ13  
 Unused_IRQ14  

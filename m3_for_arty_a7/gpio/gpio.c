@@ -58,10 +58,10 @@ int InitialiseGPIO( void )
         return XST_FAILURE;
     }
 
-    status = XGpio_Initialize(&Gpio_DAPLink, XPAR_DAPLINK_IF_0_AXI_GPIO_0_DEVICE_ID);
-    if (status != XST_SUCCESS)  {
-        return XST_FAILURE;
-    }
+    // status = XGpio_Initialize(&Gpio_DAPLink, XPAR_DAPLINK_IF_0_AXI_GPIO_0_DEVICE_ID);
+    // if (status != XST_SUCCESS)  {
+    //     return XST_FAILURE;
+    // }
 
     // GPIO0
     // Port0 drives led_4bits.  Set bottom 4 UART ports to be outputs.
@@ -80,7 +80,7 @@ int InitialiseGPIO( void )
     
     // DAPLink GPIO
     // Single channel
-    XGpio_SetDataDirection(&Gpio_DAPLink, ARTY_A7_DAPLINK_GPIO_CHANNEL, 0x00000000);
+    // XGpio_SetDataDirection(&Gpio_DAPLink, ARTY_A7_DAPLINK_GPIO_CHANNEL, 0x00000000);
 
 
     // Default value of cmos_pwdn and cmos_rst
@@ -175,7 +175,7 @@ void GPIO1_Handler ( void )
 void SetDAPLinkQSPIMode( u32 mode )
 {
     // Set the qspi_sel line
-    XGpio_DiscreteWrite(&Gpio_DAPLink, ARTY_A7_DAPLINK_GPIO_CHANNEL, mode);
+    // XGpio_DiscreteWrite(&Gpio_DAPLink, ARTY_A7_DAPLINK_GPIO_CHANNEL, mode);
     
 }
 

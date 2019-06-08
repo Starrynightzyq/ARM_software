@@ -25,12 +25,18 @@ volatile typedef struct {
 HandlerInfo IIC0_HandlerInfo; /* ov5640 */
 HandlerInfo IIC1_HandlerInfo; /* temp sensor */
 
+#ifdef XPAR_IIC_0_DEVICE_ID
 static void Iic0SendHandler(XIic *InstancePtr);
 static void Iic0ReceiveHandler(XIic *InstancePtr);
 static void Iic0StatusHandler(XIic *InstancePtr, int Event);
+#endif
+
+#ifdef XPAR_IIC_1_DEVICE_ID
 static void Iic1SendHandler(XIic *InstancePtr);
 static void Iic1ReceiveHandler(XIic *InstancePtr);
 static void Iic1StatusHandler(XIic *InstancePtr, int Event);
+#endif
+
 static int IicWriteData(XIic *InstancePtr, HandlerInfo *IicHandlerInfo, u8 reg, u8 *WriteBuffer, u16 ByteCount);
 static int IicReadData(XIic *InstancePtr, HandlerInfo *IicHandlerInfo, u8 reg, u8 *ReadBuffer, u16 ByteCount);
 static int IicWriteData16(XIic *InstancePtr, HandlerInfo *IicHandlerInfo, u16 reg, u8 *WriteBuffer, u16 ByteCount);
@@ -43,25 +49,38 @@ int InitialiseIIC( void )
 	/*
 	* Initialize the IIC driver so that it's ready to use.
 	*/
-	Status = XIic_Initialize(&IIC0_instance, XPAR_IIC_1_DEVICE_ID);
+	/* IIC_0 is connected to the ov_camera */
+#ifdef XPAR_IIC_0_DEVICE_ID
+	Status = XIic_Initialize(&IIC0_instance, XPAR_IIC_0_DEVICE_ID);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
-	Status = XIic_Initialize(&IIC1_instance, XPAR_IIC_0_DEVICE_ID);
-	if (Status != XST_SUCCESS) {
-		return XST_FAILURE;
-	}
-
-	/*
-	 * Set the Handlers for transmit and reception.
-	 */
 	XIic_SetSendHandler(&IIC0_instance, &IIC0_instance,
 	                    (XIic_Handler) Iic0SendHandler);
 	XIic_SetRecvHandler(&IIC0_instance, &IIC0_instance,
 	                    (XIic_Handler) Iic0ReceiveHandler);
 	XIic_SetStatusHandler(&IIC0_instance, &IIC0_instance,
 	                      (XIic_StatusHandler) Iic0StatusHandler);
+	
+	/*
+	 * Set the Slave address.
+	 */
+	Status = XIic_SetAddress(&IIC0_instance, XII_ADDR_TO_SEND_TYPE,
+	                         CMOS_ADDRESS);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+#endif
 
+	/* IIC_1 is connected to the temperature sensor */
+#ifdef XPAR_IIC_1_DEVICE_ID
+	Status = XIic_Initialize(&IIC1_instance, XPAR_IIC_1_DEVICE_ID);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	/*
+	 * Set the Handlers for transmit and reception.
+	 */
 	XIic_SetSendHandler(&IIC1_instance, &IIC1_instance,
 	                    (XIic_Handler) Iic1SendHandler);
 	XIic_SetRecvHandler(&IIC1_instance, &IIC1_instance,
@@ -72,20 +91,17 @@ int InitialiseIIC( void )
 	/*
 	 * Set the Slave address.
 	 */
-	Status = XIic_SetAddress(&IIC0_instance, XII_ADDR_TO_SEND_TYPE,
-	                         CMOS_ADDRESS);
-	if (Status != XST_SUCCESS) {
-		return XST_FAILURE;
-	}
 	Status = XIic_SetAddress(&IIC1_instance, XII_ADDR_TO_SEND_TYPE,
 	                         TEMP_ADDRESS);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
+#endif
 
 	return XST_SUCCESS;
 }
 
+#ifdef XPAR_IIC_0_DEVICE_ID
 static void Iic0SendHandler(XIic *InstancePtr)
 {
 	IIC0_HandlerInfo.TransmitComplete = 0;
@@ -100,7 +116,9 @@ static void Iic0StatusHandler(XIic *InstancePtr, int Event)
 {
 
 }
+#endif
 
+#ifdef XPAR_IIC_1_DEVICE_ID
 static void Iic1SendHandler(XIic *InstancePtr)
 {
 	IIC1_HandlerInfo.TransmitComplete = 0;
@@ -115,22 +133,27 @@ static void Iic1StatusHandler(XIic *InstancePtr, int Event)
 {
 
 }
+#endif
 
 // Define the IIC 0 interrupt handler here
+#ifdef XPAR_IIC_0_DEVICE_ID
 void IIC0_Handler ( void )
 {
 	XIic_InterruptHandler(&IIC0_instance);
 	NVIC_ClearPendingIRQ(IIC0_IRQn);
 	// xil_printf("IIC0 interrupt\r\n");
 }
+#endif
 
 // Define the IIC 1 interrupt handler here
+#ifdef XPAR_IIC_1_DEVICE_ID
 void IIC1_Handler ( void )
 {
 	XIic_InterruptHandler(&IIC1_instance);
 	NVIC_ClearPendingIRQ(IIC1_IRQn);
 	// xil_printf("IIC1 interrupt\r\n");
 }
+#endif
 
 /*****************************************************************************/
 /**
@@ -493,6 +516,7 @@ static int IicReadData16(XIic *InstancePtr, HandlerInfo *IicHandlerInfo, u16 reg
 	return XST_SUCCESS;
 }
 
+#ifdef XPAR_IIC_0_DEVICE_ID
 int Iic0WriteData(u8 reg, u8 *WriteBuffer, u16 ByteCount)
 {
 	int Status;
@@ -536,7 +560,9 @@ int Iic0ReadData16(u16 reg, u8 *ReadBuffer, u16 ByteCount)
 
 	return XST_SUCCESS;
 }
+#endif
 
+#ifdef XPAR_IIC_1_DEVICE_ID
 int Iic1WriteData16(u16 reg, u8 *WriteBuffer, u16 ByteCount)
 {
 	int Status;
@@ -580,7 +606,9 @@ int Iic1ReadData(u8 reg, u8 *ReadBuffer, u16 ByteCount)
 
 	return XST_SUCCESS;
 }
+#endif
 
+#ifdef XPAR_IIC_0_DEVICE_ID
 // ov5640 test
 int Iic0Test(void)
 {
@@ -602,7 +630,9 @@ int Iic0Test(void)
 
 
 }
+#endif
 
+#ifdef XPAR_IIC_1_DEVICE_ID
 // temp sensor ID read 
 int Iic1Test(void)
 {
@@ -617,3 +647,4 @@ int Iic1Test(void)
 	xil_printf("Temp senser's ID is : %x\r\n", ReadBuffer[0]);
 	return XST_SUCCESS;
 }
+#endif

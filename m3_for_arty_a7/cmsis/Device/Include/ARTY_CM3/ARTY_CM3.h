@@ -63,16 +63,16 @@ typedef enum IRQn
 /* ----------------------  ARTY_CM1 Specific Interrupt Numbers  ------------------- */
   UART0_IRQn                    = 0,       /* UART 0 Interrupt                      */
   GPIO0_IRQn                    = 1,       /* GPIO 0 Interrupt                      */
-  GPIO1_IRQn                    = 2,       /* GPIO 1 Interrupt                      */
-  QSPI0_IRQn                    = 3,       /* Quad SPI 0, (Arty board) Interrupt    */
-  DAP_QSPI0_IRQn                = 4,       /* DAPLink board Quad SPI 0 Interrupt    */
-  DAP_SPI0_IRQn                 = 5,       /* DAPLink board SPI 0 Interrupt         */
-  DAP_QSPI_XIP_IRQn             = 6,       /* DAPLink board Quad SPI XIP Interrupt  */
+  HLS_RESIZE_IRQn               = 2,       /* Image process resize Interrupt        */
+  HLS_CONTRAST_IRQn             = 3,       /* Image process contrast Interrupt      */
+  HLS_SORT_IRQn                 = 4,       /* Image process sort Interrupt          */
+  Unused5_IRQn                  = 5,   
+  Unused6_IRQn                  = 6,   
   DAPLinkFittedn_IRQn           = 7,       /* Static signal used to detect fitting of DAPLink board */
   IIC0_IRQn                     = 8,       /* IIC 0 Interrupt                       */
-  IIC1_IRQn                     = 9,       /* IIC 1 Interrupt                       */
+  Unused9_IRQn                  = 9,
   TIMER0_IRQn                   = 10,      /* TIMER 0 Interrupt                     */
-  Unused11_IRQn                 = 11,
+  LCD_SPI_IRQn                  = 11,      /* SPI 0 (LCD) Interrupt                 */
   Unused12_IRQn                 = 12,
   Unused13_IRQn                 = 13,
   Unused14_IRQn                 = 14,
