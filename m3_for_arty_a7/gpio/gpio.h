@@ -24,6 +24,9 @@ void EnableGPIOInterrupts( void );
 void IncLeds( void );
 void SetDAPLinkQSPIMode( u32 mode );
 
+void Gpio_Lcd_ResetBits(u8 pin);
+void Gpio_Lcd_SetBits(u8 pin);
+
 // void GPIO0_Handler ( void );
 // void GPIO1_Handler ( void );
 

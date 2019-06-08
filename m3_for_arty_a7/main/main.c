@@ -40,9 +40,10 @@
 #include "image.h"
 #include "timer.h"
 #include "spi_my.h"
+#include "lcd.h"
 
 //#define SIM_BUILD
-// #define DEBUG
+#define DEBUG
 // #define DDR_TEST
 /*******************************************************************/
 
@@ -54,7 +55,7 @@ int main (void)
     int     i;
     int     readbackError;
     char    debugStr[256];
-    
+
     // Illegal location
     volatile u32 emptyLoc;
     volatile u32 QSPIbase;
@@ -66,13 +67,13 @@ int main (void)
     int          CPU_rev;
     int          CPU_var;
     char         CPU_name[20];
-        
+
     // Enable the following if you wish to test illegal accesses
     // and debug lock-up conditions
-/*    
-    u32 *pLegalAddr   = (u32 *)0x40120000;
-    u32 *pIllegalAddr = (u32 *)0x40200000;
-*/
+    /*
+        u32 *pLegalAddr   = (u32 *)0x40120000;
+        u32 *pIllegalAddr = (u32 *)0x40200000;
+    */
 
 //    xil_printf("start the program\r\n");
     // Initialise the UART
@@ -80,7 +81,7 @@ int main (void)
 
     // Initialise the IIC
 #ifndef DEBUG
-    InitialiseIIC();  
+    InitialiseIIC();
 #endif
 
     // Initialize the LCD SPI controler
@@ -88,7 +89,7 @@ int main (void)
 
     // Clear all interrupts
     NVIC_ClearAllPendingIRQ();
-    
+
     // Initialise the GPIO
     status = InitialiseGPIO();
     if (status != XST_SUCCESS)  {
@@ -130,17 +131,17 @@ int main (void)
     CPU_var  = ((CPUId & 0x00F00000) >> 20);
     CPU_part = ((CPUId & 0x0000FFF0) >> 4);
     CPU_rev  = CPUId & (0x0000000F);
-    
+
     switch (CPU_part)
     {
-        case 0xC21 : strcpy(  CPU_name, "Cortex-M1" ); break;
-        case 0xC23 : strcpy(  CPU_name, "Cortex-M3" ); break;
-        default    : sprintf( CPU_name, "Unknown %x", CPU_part );
+    case 0xC21 : strcpy(  CPU_name, "Cortex-M1" ); break;
+    case 0xC23 : strcpy(  CPU_name, "Cortex-M3" ); break;
+    default    : sprintf( CPU_name, "Unknown %x", CPU_part );
     }
-    
+
     sprintf (debugStr, "Arm %s Revision %i Variant %i\r\n\n", CPU_name, CPU_rev, CPU_var );
-    
-#ifndef SIM_BUILD    
+
+#ifndef SIM_BUILD
     // Use Xilinx version print command
     print ("************************************\r\n");
     print ( debugStr );
@@ -154,20 +155,20 @@ int main (void)
     print ("************************************\r\n");
 #else
     print ( debugStr );
-#endif    
+#endif
 
     // *****************************************************
     // Test the DDRmemory
     // *****************************************************
 #ifdef DDR_TEST
-    for( i=0; i< (sizeof(bram_data)/sizeof(u32)); i++)
+    for ( i = 0; i < (sizeof(bram_data) / sizeof(u32)); i++)
         *DDRmemory++ = bram_data[i];
     readbackError = 0;
     // Reset the pointer
     DDRmemory = (u32 *)XPAR_MIG7SERIES_0_BASEADDR;
 
     // Readback
-    for( i=0; i< (sizeof(bram_data)/sizeof(u32)); i++)
+    for ( i = 0; i < (sizeof(bram_data) / sizeof(u32)); i++)
     {
         if ( *DDRmemory++ != bram_data[i] )
             readbackError++;
@@ -183,7 +184,7 @@ int main (void)
     Initialize_image_process();
     Image_Interrupt_setup();
 #endif
-    
+
     // Initialize the ov5640 cmos
 #ifndef DEBUG
     sensor_init();
@@ -200,6 +201,13 @@ int main (void)
     // EnableTIMER0Interrupts();
     DisableTIMER0Interrupts();
 
+    /* Initialize the LCD screen */
+    Lcd_Init();
+    LCD_Clear(WHITE);
+    // LCD_Clear(RED);
+
+    LCD_ShowNum1(80, 95, 0, 5, RED);
+
     // Main loop.  Handle LEDs and switches via interrupt
     xil_printf("Initialize all successful, start the main loop\r\n");
     xil_printf("test start\r\n");
@@ -210,13 +218,13 @@ int main (void)
         if ( CheckUARTRxBytes() != 0 )
             print ("x");
         */
-       // sleep(10);
-       // xil_printf("1s\r\n");
-        
-       // test spi send
-       // Lcd_Spi_Write_Byte(0x5a);
-       plate_fsm();
-       show_plate();
+        // sleep(10);
+        // xil_printf("1s\r\n");
+
+        // test spi send
+        // Lcd_Spi_Write_Byte(0x5a);
+        plate_fsm();
+        show_plate();
     }
 }
 

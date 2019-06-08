@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>CORTEX_M3 ARTY_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\vdma;..\cmos;..\image;..\timer;..\lcd;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
+              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\vdma;..\cmos;..\image;..\timer;..\lcd;..\delay;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -539,6 +539,21 @@
               <FileName>spi_my.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\lcd\spi_my.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lcd\lcd.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>DELAY</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\delay\delay.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1475,6 +1490,21 @@
               <FileName>spi_my.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\lcd\spi_my.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lcd\lcd.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>DELAY</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\delay\delay.c</FilePath>
             </File>
           </Files>
         </Group>
