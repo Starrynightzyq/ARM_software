@@ -43,7 +43,7 @@
 #include "lcd.h"
 
 //#define SIM_BUILD
-#define DEBUG
+// #define DEBUG
 // #define DDR_TEST
 /*******************************************************************/
 
@@ -223,7 +223,8 @@ int main (void)
 
         // test spi send
         // Lcd_Spi_Write_Byte(0x5a);
-        plate_fsm();
+        // Get_Hsv();
+        // plate_fsm();
         show_plate();
     }
 }

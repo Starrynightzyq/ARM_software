@@ -24,3 +24,4 @@
 void Lcd_Init(void);
 void LCD_Clear(u32 Color);
 void LCD_ShowNum1(u16 x, u16 y, float num, u8 len, u32 color);
+void LCD_ShowString(u16 x, u16 y, const u8 *p, u16 color);

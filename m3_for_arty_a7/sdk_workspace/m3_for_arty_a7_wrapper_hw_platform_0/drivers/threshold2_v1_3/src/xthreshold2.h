@@ -87,6 +87,12 @@ u32 XThreshold2_IsReady(XThreshold2 *InstancePtr);
 void XThreshold2_EnableAutoRestart(XThreshold2 *InstancePtr);
 void XThreshold2_DisableAutoRestart(XThreshold2 *InstancePtr);
 
+u32 XThreshold2_Get_h(XThreshold2 *InstancePtr);
+u32 XThreshold2_Get_h_vld(XThreshold2 *InstancePtr);
+u32 XThreshold2_Get_s(XThreshold2 *InstancePtr);
+u32 XThreshold2_Get_s_vld(XThreshold2 *InstancePtr);
+u32 XThreshold2_Get_v(XThreshold2 *InstancePtr);
+u32 XThreshold2_Get_v_vld(XThreshold2 *InstancePtr);
 void XThreshold2_Set_rows(XThreshold2 *InstancePtr, u32 Data);
 u32 XThreshold2_Get_rows(XThreshold2 *InstancePtr);
 void XThreshold2_Set_cols(XThreshold2 *InstancePtr, u32 Data);

@@ -7,13 +7,13 @@
 
 OPTION psf_version = 2.1;
 
-BEGIN driver threshold2
+BEGIN driver draw_line_hls
 
- OPTION supported_peripherals = (threshold2_v1_2 );
+ OPTION supported_peripherals = (draw_line_hls_v1_1 );
  OPTION driver_state = ACTIVE;
  OPTION copyfiles = all;
- OPTION name = threshold2;
- OPTION version = 1.2;
+ OPTION name = draw_line_hls;
+ OPTION version = 1.1;
 
 END driver
 

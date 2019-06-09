@@ -86,7 +86,12 @@ int InitialiseGPIO( void )
 
 
     // Default value of cmos_pwdn and cmos_rst
+    XGpio_DiscreteWrite(&Gpio_Cmos_Ctrl, CMOS_PWDN_CHANNEL, 0x1); // pwdn works high
+    delay_ms(10);
     XGpio_DiscreteWrite(&Gpio_Cmos_Ctrl, CMOS_PWDN_CHANNEL, 0x0); // pwdn works high
+    delay_ms(10);
+    XGpio_DiscreteWrite(&Gpio_Cmos_Ctrl, CMOS_RST_CHANNEL, 0x0);  // rst works low
+    delay_ms(10);
     XGpio_DiscreteWrite(&Gpio_Cmos_Ctrl, CMOS_RST_CHANNEL, 0x1);  // rst works low
 //    ARTY_A7_GPIO1->DATA0 = 0x0;
 

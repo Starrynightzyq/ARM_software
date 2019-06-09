@@ -66,7 +66,7 @@ typedef enum IRQn
   HLS_RESIZE_IRQn               = 2,       /* Image process resize Interrupt        */
   HLS_CONTRAST_IRQn             = 3,       /* Image process contrast Interrupt      */
   HLS_SORT_IRQn                 = 4,       /* Image process sort Interrupt          */
-  Unused5_IRQn                  = 5,   
+  Plate_IRQn                    = 5,       /* 8 位车牌数据中断信号                    */
   Unused6_IRQn                  = 6,   
   DAPLinkFittedn_IRQn           = 7,       /* Static signal used to detect fitting of DAPLink board */
   IIC0_IRQn                     = 8,       /* IIC 0 Interrupt                       */

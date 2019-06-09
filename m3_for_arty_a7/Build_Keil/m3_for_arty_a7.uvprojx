@@ -818,17 +818,17 @@
             <File>
               <FileName>xthreshold2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -938,17 +938,17 @@
             <File>
               <FileName>xdraw_line_hls.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls.c</FilePath>
             </File>
             <File>
               <FileName>xdraw_line_hls_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_g.c</FilePath>
             </File>
             <File>
               <FileName>xdraw_line_hls_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1769,17 +1769,17 @@
             <File>
               <FileName>xthreshold2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1889,17 +1889,17 @@
             <File>
               <FileName>xdraw_line_hls.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls.c</FilePath>
             </File>
             <File>
               <FileName>xdraw_line_hls_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_g.c</FilePath>
             </File>
             <File>
               <FileName>xdraw_line_hls_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_sinit.c</FilePath>
             </File>
           </Files>
         </Group>

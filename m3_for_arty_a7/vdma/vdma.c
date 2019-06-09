@@ -157,7 +157,7 @@ int VDMA_Config(void)
 
     xil_printf("Starting the second VDMA \n\r");
     Status = run_triple_due_frame_buffer(&VdmaInstance_1, 1, H_ACTIVE, V_ACTIVE,
-    		camrx_srcBuffer, process_srcBuffer, 2, 0);
+    		process_srcBuffer, camrx_srcBuffer, 2, 0);
     if (Status != XST_SUCCESS) {
     	xil_printf("Transfer of frames failed with error = %d\r\n",Status);
     	return XST_FAILURE;
@@ -167,7 +167,7 @@ int VDMA_Config(void)
     
     xil_printf("Starting the first VDMA \n\r");
     Status = run_triple_due_frame_buffer(&VdmaInstance_0, 0, H_ACTIVE, V_ACTIVE,
-    		process_srcBuffer, camrx_srcBuffer, 2, 0);
+    		camrx_srcBuffer, process_srcBuffer, 2, 0);
     if (Status != XST_SUCCESS) {
     	xil_printf("Transfer of frames failed with error = %d\r\n",Status);
     	return XST_FAILURE;

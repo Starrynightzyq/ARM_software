@@ -83,7 +83,7 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     XResize_Handler           ; Image process resize Handler
                 DCD     XContrast_Handler         ; Image process contrast Handler
                 DCD     XSort_Handler             ; Image process sort Handler
-                DCD     Unused_IRQ5               ; Unused
+                DCD     XPlate_Handler               ; Unused
                 DCD     Unused_IRQ6               ; Unused
                 DCD     DAPLinkFittedn            ; Used as steady state GPIO input, not IRQ
                 DCD     IIC0_Handler              ; IIC 0 Handler
@@ -182,7 +182,7 @@ Default_Handler PROC
                 EXPORT XResize_Handler            [WEAK]
                 EXPORT XContrast_Handler          [WEAK]
                 EXPORT XSort_Handler              [WEAK]
-                EXPORT Unused_IRQ5                [WEAK]
+                EXPORT XPlate_Handler                [WEAK]
                 EXPORT Unused_IRQ6                [WEAK]
                 EXPORT DAPLinkFittedn             [WEAK]
                 EXPORT IIC0_Handler               [WEAK]
@@ -215,7 +215,7 @@ GPIO0_Handler
 XResize_Handler
 XContrast_Handler 
 XSort_Handler 
-Unused_IRQ5  
+XPlate_Handler  
 Unused_IRQ6 
 DAPLinkFittedn   
 IIC0_Handler   

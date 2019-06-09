@@ -26,6 +26,8 @@ void plate_fsm(void);
 
 void show_plate(void);
 
+void Get_Hsv(void);
+
 #ifdef __cplusplus
 }
 #endif

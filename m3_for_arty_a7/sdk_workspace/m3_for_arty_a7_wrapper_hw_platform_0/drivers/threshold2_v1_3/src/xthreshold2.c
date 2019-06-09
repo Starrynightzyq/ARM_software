@@ -76,6 +76,66 @@ void XThreshold2_DisableAutoRestart(XThreshold2 *InstancePtr) {
     XThreshold2_WriteReg(InstancePtr->Axilites_BaseAddress, XTHRESHOLD2_AXILITES_ADDR_AP_CTRL, 0);
 }
 
+u32 XThreshold2_Get_h(XThreshold2 *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XThreshold2_ReadReg(InstancePtr->Axilites_BaseAddress, XTHRESHOLD2_AXILITES_ADDR_H_DATA);
+    return Data;
+}
+
+u32 XThreshold2_Get_h_vld(XThreshold2 *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XThreshold2_ReadReg(InstancePtr->Axilites_BaseAddress, XTHRESHOLD2_AXILITES_ADDR_H_CTRL);
+    return Data & 0x1;
+}
+
+u32 XThreshold2_Get_s(XThreshold2 *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XThreshold2_ReadReg(InstancePtr->Axilites_BaseAddress, XTHRESHOLD2_AXILITES_ADDR_S_DATA);
+    return Data;
+}
+
+u32 XThreshold2_Get_s_vld(XThreshold2 *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XThreshold2_ReadReg(InstancePtr->Axilites_BaseAddress, XTHRESHOLD2_AXILITES_ADDR_S_CTRL);
+    return Data & 0x1;
+}
+
+u32 XThreshold2_Get_v(XThreshold2 *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XThreshold2_ReadReg(InstancePtr->Axilites_BaseAddress, XTHRESHOLD2_AXILITES_ADDR_V_DATA);
+    return Data;
+}
+
+u32 XThreshold2_Get_v_vld(XThreshold2 *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XThreshold2_ReadReg(InstancePtr->Axilites_BaseAddress, XTHRESHOLD2_AXILITES_ADDR_V_CTRL);
+    return Data & 0x1;
+}
+
 void XThreshold2_Set_rows(XThreshold2 *InstancePtr, u32 Data) {
     Xil_AssertVoid(InstancePtr != NULL);
     Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);

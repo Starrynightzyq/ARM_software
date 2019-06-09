@@ -6,6 +6,7 @@ BEGIN OS
  PARAMETER OS_NAME = standalone
  PARAMETER OS_VER = 6.7
  PARAMETER PROC_INSTANCE = Cortex_M3_0
+ PARAMETER profile_timer = axi_timer_0
  PARAMETER sleep_timer = axi_timer_0
  PARAMETER stdin = axi_uartlite_0
  PARAMETER stdout = axi_uartlite_0
@@ -69,7 +70,7 @@ END
 
 BEGIN DRIVER
  PARAMETER DRIVER_NAME = draw_line_hls
- PARAMETER DRIVER_VER = 1.0
+ PARAMETER DRIVER_VER = 1.1
  PARAMETER HW_INSTANCE = ov_cmos_Image_Process_draw_line_hls_0
 END
 
@@ -99,7 +100,7 @@ END
 
 BEGIN DRIVER
  PARAMETER DRIVER_NAME = threshold2
- PARAMETER DRIVER_VER = 1.2
+ PARAMETER DRIVER_VER = 1.3
  PARAMETER HW_INSTANCE = ov_cmos_Image_Process_threshold2_0
 END
 

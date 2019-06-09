@@ -153,40 +153,7 @@
           <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>205</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>2098</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\main\main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\m3_for_arty_a7\../main/main.c\205</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>212</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>2126</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\main\main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\m3_for_arty_a7\../main/main.c\212</Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -232,6 +199,16 @@
           <count>8</count>
           <WinNumber>1</WinNumber>
           <ItemText>ConfigPtr</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>char_index_t</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>char_index</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
@@ -1714,7 +1691,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2.c</PathWithFileName>
       <FilenameWithoutPath>xthreshold2.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1726,7 +1703,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_g.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_g.c</PathWithFileName>
       <FilenameWithoutPath>xthreshold2_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1738,7 +1715,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_2\src\xthreshold2_sinit.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_sinit.c</PathWithFileName>
       <FilenameWithoutPath>xthreshold2_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1978,7 +1955,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls.c</PathWithFileName>
       <FilenameWithoutPath>xdraw_line_hls.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1990,7 +1967,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_g.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_g.c</PathWithFileName>
       <FilenameWithoutPath>xdraw_line_hls_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2002,7 +1979,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_0\src\xdraw_line_hls_sinit.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_sinit.c</PathWithFileName>
       <FilenameWithoutPath>xdraw_line_hls_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
