@@ -38,6 +38,7 @@
 
 // Instance of the UART, local to this module
 static XUartLite UART0_instance;
+static XUartLite UART_Keyboard;
 
 /*
  * The following counters are used to determine when the entire buffer has
@@ -63,6 +64,11 @@ int InitialiseUART( void )
         return XST_FAILURE;
     }
 
+    Status = XUartLite_Initialize(&UART_Keyboard, XPAR_UARTLITE_1_DEVICE_ID);
+    if (Status != XST_SUCCESS) {
+        return XST_FAILURE;
+    }
+
     /*
     * Setup the handlers for the UartLite that will be called from the
     * interrupt context when data has been sent and received, specify a
@@ -71,6 +77,9 @@ int InitialiseUART( void )
     */
     XUartLite_SetSendHandler(&UART0_instance, SendHandler, &UART0_instance);
     XUartLite_SetRecvHandler(&UART0_instance, RecvHandler, &UART0_instance);
+
+    XUartLite_SetSendHandler(&UART_Keyboard, SendHandler_Keyboard, &UART_Keyboard);
+    XUartLite_SetRecvHandler(&UART_Keyboard, RecvHandler_Keyboard, &UART_Keyboard);
 
     /*
     * Start receiving data before sending it since there is a loopback.
@@ -90,6 +99,15 @@ void RecvHandler(void *CallBackRef, unsigned int EventData)
     TotalReceivedCount = EventData;
 }
 
+
+void SendHandler_Keyboard(void *CallBackRef, unsigned int EventData)
+{
+}
+
+void RecvHandler_Keyboard(void *CallBackRef, unsigned int EventData)
+{
+}
+
 int CheckUARTRxBytes( void )
 {
     static int  BytesRx;
@@ -107,6 +125,7 @@ int CheckUARTRxBytes( void )
 void EnableUARTInterrupts( void )
 {
     XUartLite_EnableInterrupt(&UART0_instance);
+    XUartLite_EnableInterrupt(&UART_Keyboard);
 }
 
 
@@ -121,5 +140,23 @@ void UART0_Handler ( void )
     // Used to detect received characters
     // IncLeds();
 
+}
+
+void UART_Keyboard_Handler ( void )
+{
+    XUartLite_InterruptHandler(&UART_Keyboard);
+    NVIC_ClearPendingIRQ(UART_KEY_IRQn);
+
+    // Test to indicate when the IRQ is called
+    // Used to detect received characters
+    // IncLeds();
+
+}
+
+unsigned int UART_Keyboard_Send(u8 *DataBufferPtr, unsigned int NumBytes)
+{
+    unsigned int BytesSent;
+    BytesSent = XUartLite_Send(&UART_Keyboard, DataBufferPtr, NumBytes);
+    return BytesSent;
 }
 

@@ -15,6 +15,8 @@
  *
  */
 
+#include "xil_types.h"
+
 // Define the UART interrupt handler here
 // Already defined in startup_CMSDK_CM1.s
 // void UART0_Handler ( void );
@@ -23,4 +25,9 @@ void EnableUARTInterrupts( void );
 int CheckUARTRxBytes( void );
 void SendHandler(void *CallBackRef, unsigned int EventData);
 void RecvHandler(void *CallBackRef, unsigned int EventData);
+void SendHandler_Keyboard(void *CallBackRef, unsigned int EventData);
+void RecvHandler_Keyboard(void *CallBackRef, unsigned int EventData);
+
+
+unsigned int UART_Keyboard_Send(u8 *DataBufferPtr, unsigned int NumBytes);
 

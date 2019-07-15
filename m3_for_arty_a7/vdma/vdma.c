@@ -31,7 +31,7 @@
 #define VIDEO1_BASEADDR2 DDR_BASEADDR + 0x0500000
 
 static XAxiVdma VdmaInstance_0;
-static XAxiVdma VdmaInstance_1;
+//static XAxiVdma VdmaInstance_1;
 
 unsigned int camrx_srcBuffer = (DDR_BASEADDR + 0x1000000);
 unsigned int process_srcBuffer = (DDR_BASEADDR + 0x2000000);
@@ -46,14 +46,14 @@ void Read_DDR_Config(void)
 {
 	/*****************从 DDR 读数据设置**********************/
 	VDMA_Read_Config(XPAR_AXIVDMA_0_BASEADDR, VIDEO1_BASEADDR0);
-	VDMA_Read_Config(XPAR_AXIVDMA_1_BASEADDR, VIDEO0_BASEADDR0);
+	// VDMA_Read_Config(XPAR_AXIVDMA_1_BASEADDR, VIDEO0_BASEADDR0);
 }
 
 void Write_DDR_Config(void)
 {
 	/*********** 写入 DDR 设置*************************/
 	VDMA_Write_Config(XPAR_AXIVDMA_0_BASEADDR, VIDEO0_BASEADDR0);
-	VDMA_Write_Config(XPAR_AXIVDMA_1_BASEADDR, VIDEO1_BASEADDR0);
+	// VDMA_Write_Config(XPAR_AXIVDMA_1_BASEADDR, VIDEO1_BASEADDR0);
 }
 
 void Video_Buffer_Initialize(void)
@@ -154,7 +154,7 @@ int VDMA_Config(void)
 {
 	int Status;
 
-
+/*
     xil_printf("Starting the second VDMA \n\r");
     Status = run_triple_due_frame_buffer(&VdmaInstance_1, 1, H_ACTIVE, V_ACTIVE,
     		process_srcBuffer, camrx_srcBuffer, 2, 0);
@@ -164,10 +164,10 @@ int VDMA_Config(void)
     } else {
     	xil_printf("Transfer of frames started \r\n");
     }
-    
+*/    
     xil_printf("Starting the first VDMA \n\r");
     Status = run_triple_due_frame_buffer(&VdmaInstance_0, 0, H_ACTIVE, V_ACTIVE,
-    		camrx_srcBuffer, process_srcBuffer, 2, 0);
+    		camrx_srcBuffer, camrx_srcBuffer, 2, 0);
     if (Status != XST_SUCCESS) {
     	xil_printf("Transfer of frames failed with error = %d\r\n",Status);
     	return XST_FAILURE;

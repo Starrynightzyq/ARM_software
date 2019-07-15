@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>CORTEX_M3 ARTY_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\vdma;..\cmos;..\image;..\timer;..\lcd;..\delay;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
+              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\vdma;..\cmos;..\image;..\timer;..\lcd;..\delay;..\axis_switch;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -545,6 +545,11 @@
               <FileType>1</FileType>
               <FilePath>..\lcd\lcd.c</FilePath>
             </File>
+            <File>
+              <FileName>dis_plate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lcd\dis_plate.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -554,6 +559,16 @@
               <FileName>delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\delay\delay.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>SWITCH</GroupName>
+          <Files>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\axis_switch\switch.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -813,22 +828,47 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Xilinx_SWITCH</GroupName>
+          <Files>
+            <File>
+              <FileName>xaxis_switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>HLS_Threshold2</GroupName>
           <Files>
             <File>
               <FileName>xthreshold2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_5\src\xthreshold2.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_5\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_5\src\xthreshold2_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1496,6 +1536,11 @@
               <FileType>1</FileType>
               <FilePath>..\lcd\lcd.c</FilePath>
             </File>
+            <File>
+              <FileName>dis_plate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lcd\dis_plate.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1505,6 +1550,16 @@
               <FileName>delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\delay\delay.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>SWITCH</GroupName>
+          <Files>
+            <File>
+              <FileName>switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\axis_switch\switch.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1764,22 +1819,47 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Xilinx_SWITCH</GroupName>
+          <Files>
+            <File>
+              <FileName>xaxis_switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xaxis_switch_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\axis_switch_v1_2\src\xaxis_switch_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>HLS_Threshold2</GroupName>
           <Files>
             <File>
               <FileName>xthreshold2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_5\src\xthreshold2.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_5\src\xthreshold2_g.c</FilePath>
             </File>
             <File>
               <FileName>xthreshold2_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_3\src\xthreshold2_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_5\src\xthreshold2_sinit.c</FilePath>
             </File>
           </Files>
         </Group>

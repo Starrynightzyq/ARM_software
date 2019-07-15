@@ -22,8 +22,6 @@ int Initialize_image_process(void);
 
 int Image_Interrupt_setup(void);
 
-void plate_fsm(void);
-
 void show_plate(void);
 
 void Get_Hsv(void);

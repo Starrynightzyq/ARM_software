@@ -55,12 +55,12 @@ int InitialiseGPIO( void )
         return XST_FAILURE;
     }
 
-    status = XGpio_Initialize(&Gpio_Cmos_Ctrl, XPAR_OV_CMOS_AXI_GPIO_1_DEVICE_ID);
+    status = XGpio_Initialize(&Gpio_Cmos_Ctrl, XPAR_OV_CMOS_CMOS2AXIS_AXI_GPIO_1_DEVICE_ID);
     if (status != XST_SUCCESS)  {
         return XST_FAILURE;
     }
 
-    status = XGpio_Initialize(&Gpio_Lcd, XPAR_GPIO_1_DEVICE_ID);
+    status = XGpio_Initialize(&Gpio_Lcd, XPAR_LCD_AXI_GPIO_1_DEVICE_ID);
     if (status != XST_SUCCESS)  {
         return XST_FAILURE;
     }
@@ -127,6 +127,9 @@ void GPIO0_Handler ( void )
     // Read dip switches, change LEDs to match
     gpio_dip_switches = XGpio_DiscreteRead(&Gpio_Led_DIPSw, ARTY_A7_DIP_CHANNEL);   // Capture DIP status
     XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, gpio_dip_switches);   // Set LEDs
+
+    // set the AXIS_SWITCH
+    updateChannel(gpio_dip_switches & 0x03);
 
     // Clear interrupt from GPIO
     XGpio_InterruptClear(&Gpio_Led_DIPSw, XGPIO_IR_MASK);

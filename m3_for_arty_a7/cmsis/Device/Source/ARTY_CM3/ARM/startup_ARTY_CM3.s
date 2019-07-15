@@ -80,10 +80,10 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 ; External Interrupts
                 DCD     UART0_Handler             ; UART 0 Handler
                 DCD     GPIO0_Handler             ; GPIO 0 Handler
-                DCD     XResize_Handler           ; Image process resize Handler
-                DCD     XContrast_Handler         ; Image process contrast Handler
-                DCD     XSort_Handler             ; Image process sort Handler
-                DCD     XPlate_Handler               ; Unused
+                DCD     UART_Keyboard_Handler               ; Unused
+                DCD     Unused_IRQ3               ; Unused
+                DCD     Unused_IRQ4               ; Unused
+                DCD     XPlate_Handler            ; A license plate recognition is completed
                 DCD     Unused_IRQ6               ; Unused
                 DCD     DAPLinkFittedn            ; Used as steady state GPIO input, not IRQ
                 DCD     IIC0_Handler              ; IIC 0 Handler
@@ -179,9 +179,9 @@ SysTick_Handler\
 Default_Handler PROC
                 EXPORT UART0_Handler              [WEAK]
                 EXPORT GPIO0_Handler              [WEAK]
-                EXPORT XResize_Handler            [WEAK]
-                EXPORT XContrast_Handler          [WEAK]
-                EXPORT XSort_Handler              [WEAK]
+                EXPORT UART_Keyboard_Handler            [WEAK]
+                EXPORT Unused_IRQ3          [WEAK]
+                EXPORT Unused_IRQ4              [WEAK]
                 EXPORT XPlate_Handler                [WEAK]
                 EXPORT Unused_IRQ6                [WEAK]
                 EXPORT DAPLinkFittedn             [WEAK]
@@ -212,9 +212,9 @@ Default_Handler PROC
 
 UART0_Handler
 GPIO0_Handler
-XResize_Handler
-XContrast_Handler 
-XSort_Handler 
+UART_Keyboard_Handler
+Unused_IRQ3 
+Unused_IRQ4 
 XPlate_Handler  
 Unused_IRQ6 
 DAPLinkFittedn   

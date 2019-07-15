@@ -41,6 +41,11 @@
 #include "timer.h"
 #include "spi_my.h"
 #include "lcd.h"
+#include "switch.h"
+
+
+extern u8 keyboard_space[12];
+extern u8 keyboard_up[12];
 
 //#define SIM_BUILD
 // #define DEBUG
@@ -103,6 +108,7 @@ int main (void)
 
     // Enable UART Interrupts
     NVIC_EnableIRQ(UART0_IRQn);
+    NVIC_EnableIRQ(UART_KEY_IRQn);
     EnableUARTInterrupts();
 
     // Enable IIC Interrupts
@@ -185,6 +191,10 @@ int main (void)
     Image_Interrupt_setup();
 #endif
 
+    // Initialize the AXIS_SWITCH
+    Switch_Init();
+    SetDefaultChannel(0);
+
     // Initialize the ov5640 cmos
 #ifndef DEBUG
     sensor_init();
@@ -206,7 +216,7 @@ int main (void)
     LCD_Clear(WHITE);
     // LCD_Clear(RED);
 
-    LCD_ShowNum1(80, 95, 0, 5, RED);
+    // LCD_ShowNum1(80, 95, 0, 5, RED);
 
     // Main loop.  Handle LEDs and switches via interrupt
     xil_printf("Initialize all successful, start the main loop\r\n");
@@ -225,7 +235,11 @@ int main (void)
         // Lcd_Spi_Write_Byte(0x5a);
         // Get_Hsv();
         // plate_fsm();
-        show_plate();
+        // show_plate();
+        // 
+        
+        // UART_Keyboard_Send(keyboard_space, 12);
+        // UART_Keyboard_Send(keyboard_up, 12);
     }
 }
 

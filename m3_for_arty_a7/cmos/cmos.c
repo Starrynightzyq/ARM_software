@@ -3,6 +3,8 @@
 #include "xparameters.h"
 #include "xil_printf.h"
 
+// #define COLOR_BAR_TEST
+
 struct reginfo sensor_init_data[] =
 {
 /*	{0x3103, 0x11}, // system clock from pad, bit[1]
@@ -629,6 +631,12 @@ struct reginfo ov5640_init_data[] =
 	{SEQUENCE_END, 0x00}
 };
 
+static struct reginfo sensor_color_bar_data[] = {
+		{0x503D, 0x80},
+
+		{SEQUENCE_END, 0x00}
+};
+
 int ov5640_read(u16 reg_addr, u8 *read_buf)
 {
 	return Iic0ReadData16(reg_addr, read_buf, 1);
@@ -653,5 +661,9 @@ int sensor_init(void)
 {
 	sensor_write_array(ov5640_init_data);
 	xil_printf("Initialize the ov5640 done\r\n");
+#ifdef COLOR_BAR_TEST
+	sensor_write_array(sensor_color_bar_data);
+	xil_printf("Sensor color bar test mode\r\n");
+#endif
 	return 0;
 }
