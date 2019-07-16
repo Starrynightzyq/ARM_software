@@ -23,6 +23,7 @@
 #include "xparameters.h"        // Project memory and device map
 #include "xgpio.h"              // Xilinx GPIO routines
 #include "peripherallink.h"     // IRQ definitions
+#include "switch.h"
 
 /************************** Variable Definitions **************************/
 /*
@@ -32,11 +33,12 @@
  * Also they are initialised in main, but accessed by the IRQ routines
  */
 
+extern int plate_counter; // 识别到的车牌数, 定义在 image.c
+
 static XGpio Gpio_Led_DIPSw;   /* The driver instance for GPIO Device 0 */
 static XGpio Gpio_Cmos_Ctrl;   /* The driver instance for GPIO Device 1 */
 static XGpio Gpio_DAPLink;     /* The driver instance for the DAPLink GPIO */
 static XGpio Gpio_Lcd;         /* The driver instance for the lcd gpio, [2:0] = {BLK,RES,DC}
-
 
 /*****************************************************************************/
 
@@ -128,8 +130,10 @@ void GPIO0_Handler ( void )
     gpio_dip_switches = XGpio_DiscreteRead(&Gpio_Led_DIPSw, ARTY_A7_DIP_CHANNEL);   // Capture DIP status
     XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, gpio_dip_switches);   // Set LEDs
 
+    // clear the plate_counter
+    plate_counter = 0;
     // set the AXIS_SWITCH
-    updateChannel(gpio_dip_switches & 0x03);
+    updateChannel((gpio_dip_switches >> 1) & 0x03); // the second sw control the channel
 
     // Clear interrupt from GPIO
     XGpio_InterruptClear(&Gpio_Led_DIPSw, XGPIO_IR_MASK);

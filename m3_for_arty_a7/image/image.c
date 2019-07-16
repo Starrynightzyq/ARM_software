@@ -71,25 +71,23 @@ static XContrast_hls_rom Contrast;
 static XGpio Gpio_Sort;
 #endif
 
-volatile u8 Sort_Flag = 0;
+// volatile u8 Sort_Flag = 0;
 volatile u32 char_index = 0;
-u32 char_index_t = 0;
-volatile u32 char_diff = 0;
+// u32 char_index_t = 0;
+// volatile u32 char_diff = 0;
 
 u8 char_addr = 0;               // 车牌中字的位置
 u32 v_char_index_now[8] = {0}; // 前一组结果
-u32 v_char_diff_now[8] = {0};  // 前一组差值
-u32 v_char_index_last[8] = {0}; // 前一组结果
-u32 v_char_diff_last[8] = {0};  // 前一组差值
-u32 v_char_index_show[8] = {0}; // 前一组结果
-u32 v_char_diff_show[8] = {0};  // 前一组差值
+// u32 v_char_diff_now[8] = {0};  // 前一组差值
+// u32 v_char_index_last[8] = {0}; // 前一组结果
+// u32 v_char_diff_last[8] = {0};  // 前一组差值
+// u32 v_char_index_show[8] = {0}; // 前一组结果
+// u32 v_char_diff_show[8] = {0};  // 前一组差值
 
-u8 frame_count = 0;     // 图像帧数计数器
-
-u8 recognize_done = 0;	// 识别完成标记位
+// u8 recognize_done = 0;	// 识别完成标记位
 u8 show_plate_flag = 0;
 
-int palte_count = 0; // 识别到的车牌数
+int plate_counter = 0; // 识别到的车牌数
 
 u8 keyboard_space[12] = {0x0C, 0x00, 0xA1, 0x01, 0x00, 0x00, 0x2C, 0x00, 0x00, 0x00, 0x00, 0x00};
 u8 keyboard_up[12] = {0x0C, 0x00, 0xA1, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -256,8 +254,11 @@ void XPlate_InterruptHandler(void)
 {
 	show_plate_flag = 1;
 
-	UART_Keyboard_Send(keyboard_space, 12);
-	UART_Keyboard_Send(keyboard_up, 12);
+	if (plate_counter < (MAX_PLATE_COUNTER - 1))
+	{
+		UART_Keyboard_Send(keyboard_space, 12);
+		UART_Keyboard_Send(keyboard_up, 12);
+	}
 
 	char_index = XGpio_DiscreteRead(&Gpio_Sort, CHAR_INDEX_CHANNEL);
 	xil_printf("char is %05x\r\n", char_index);
@@ -265,7 +266,6 @@ void XPlate_InterruptHandler(void)
 
 int Image_Interrupt_setup(void)
 {
-	int Status;
 
 	NVIC_EnableIRQ(Plate_IRQn);
 
@@ -277,66 +277,37 @@ int Image_Interrupt_setup(void)
 void show_plate(void)
 {
 	int i = 0;
-	volatile u8 isdiff = 0;
-	u32 char_index_tt = 0;
+	u32 char_index_t = 0;
 
-	if ((char_index_t & 0xfffff000) != (char_index & 0xfffff000))
+	if (show_plate_flag == 1)           //if识别到新的车牌号
 	{
-		isdiff = 1;
 		char_index_t = char_index;
-		char_index_tt = char_index_t;
-		for (i = 0; i < 8; i++)
+		for (i = 0; i < 5; i++)
 		{
-			v_char_index_now[i] = char_index_tt & 0x000F;
-			char_index_tt = char_index_tt >> 4;
+			v_char_index_now[i] = char_index_t & 0x000F;
+			char_index_t = char_index_t >> 4;
+			if (v_char_index_now[i] == 0xA)
+			{
+				goto end;
+			}
 		}
-	}
-	else
-	{
-		isdiff = 0;
-	}
+		xil_printf("plate num is %2d\r\n", plate_counter);
 
 #ifdef LCD_SHOW
-	if ((show_plate_flag == 1)&&(isdiff == 1))               //if识别到新的车牌号
-	{
-		show_plate_num(v_char_index_now);
-
-		/* print to console */
-		xil_printf("plate %2d:\r\n", palte_count++);
-		for (i = 0; i < 8; i++)
-		{
-			xil_printf("%4d ", v_char_index_now[i]);
-		}
-		// xil_printf("\r\n different is:\r\n");
-		// for (i = 0; i < 8; i++)
-		// {
-		// 	xil_printf("%4d ", v_char_diff_now[i]);
-		// }
-		xil_printf("\r\n \r\n");
-
-		show_plate_flag = 0;
-	}
-#else
-	if ((show_plate_flag == 1)&&(isdiff == 1))
-	{
-
-		/* print to console */
-		xil_printf("plate %2d:\r\n", palte_count++);
-		for (i = 0; i < 8; i++)
-		{
-			xil_printf("%4d ", v_char_index_now[i]);
-		}
-		// xil_printf("\r\n different is:\r\n");
-		// for (i = 0; i < 8; i++)
-		// {
-		// 	xil_printf("%4d ", v_char_diff_now[i]);
-		// }
-		xil_printf("\r\n \r\n");
-
-		isdiff = 0;
-		show_plate_flag = 0;
-	}
+		show_plate_num(v_char_index_now, plate_counter);
 #endif
+		if (plate_counter >= (MAX_PLATE_COUNTER - 1))
+		{
+			plate_counter == 0;
+		}
+		else
+		{
+			plate_counter++;
+		}
+
+end:	show_plate_flag = 0;
+	}
+
 }
 
 

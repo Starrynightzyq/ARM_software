@@ -18,6 +18,8 @@ extern "C" {
 #define CHAR_NUM 8      // 车牌中字的个数
 #define POINT_MAX_DIFF 70 // 车牌中点的最大差值
 
+#define MAX_PLATE_COUNTER 20 // 最大识别车牌数
+
 int Initialize_image_process(void);
 
 int Image_Interrupt_setup(void);

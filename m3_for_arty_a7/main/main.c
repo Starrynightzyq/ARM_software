@@ -235,7 +235,7 @@ int main (void)
         // Lcd_Spi_Write_Byte(0x5a);
         // Get_Hsv();
         // plate_fsm();
-        // show_plate();
+        show_plate();
         // 
         
         // UART_Keyboard_Send(keyboard_space, 12);
