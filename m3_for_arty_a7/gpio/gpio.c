@@ -24,6 +24,7 @@
 #include "xgpio.h"              // Xilinx GPIO routines
 #include "peripherallink.h"     // IRQ definitions
 #include "switch.h"
+#include "gizwits_product.h"
 
 /************************** Variable Definitions **************************/
 /*
@@ -133,7 +134,15 @@ void GPIO0_Handler ( void )
     // clear the plate_counter
     plate_counter = 0;
     // set the AXIS_SWITCH
-    updateChannel((gpio_dip_switches >> 1) & 0x03); // the second sw control the channel
+    updateChannel((gpio_dip_switches >> 3) & 0x01); // the second sw control the channel  ((gpio_dip_switches >> 1) & 0x03)
+
+    // GIZ
+    switch((gpio_dip_switches) & 0x07) {
+        case 0x01: gizwitsSetMode(WIFI_RESET_MODE); xil_printf("WIFI_RESET_MODE\r\n"); break;
+        case 0x02: gizwitsSetMode(WIFI_SOFTAP_MODE); xil_printf("WIFI_SOFTAP_MODE\r\n"); break;
+        case 0x04: gizwitsSetMode(WIFI_AIRLINK_MODE); xil_printf("WIFI_AIRLINK_MODE\r\n"); break;
+        default: break;
+    }
 
     // Clear interrupt from GPIO
     XGpio_InterruptClear(&Gpio_Led_DIPSw, XGPIO_IR_MASK);

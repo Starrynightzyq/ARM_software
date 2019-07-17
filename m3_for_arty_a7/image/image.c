@@ -77,7 +77,7 @@ volatile u32 char_index = 0;
 // volatile u32 char_diff = 0;
 
 u8 char_addr = 0;               // 车牌中字的位置
-u32 v_char_index_now[8] = {0}; // 前一组结果
+u8 v_char_index_now[8] = {0}; // 前一组结果
 // u32 v_char_diff_now[8] = {0};  // 前一组差值
 // u32 v_char_index_last[8] = {0}; // 前一组结果
 // u32 v_char_diff_last[8] = {0};  // 前一组差值

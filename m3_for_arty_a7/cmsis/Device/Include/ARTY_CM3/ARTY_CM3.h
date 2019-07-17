@@ -64,7 +64,7 @@ typedef enum IRQn
   UART0_IRQn                    = 0,       /* UART 0 Interrupt                      */
   GPIO0_IRQn                    = 1,       /* GPIO 0 Interrupt                      */
   UART_KEY_IRQn                 = 2,
-  Unused3_IRQn                  = 3,
+  UartNs0_IRQn                  = 3,       /* UART16550 0 Interrupt                 */
   Unused4_IRQn                  = 4,
   Plate_IRQn                    = 5,       /* 8 位车牌数据中断信号                    */
   Unused6_IRQn                  = 6,   

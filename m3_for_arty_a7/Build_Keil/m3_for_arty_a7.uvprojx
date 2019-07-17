@@ -275,7 +275,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0xf000</Size>
+                <Size>0x20000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>CORTEX_M3 ARTY_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\vdma;..\cmos;..\image;..\timer;..\lcd;..\delay;..\axis_switch;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
+              <IncludePath>..\cmsis\CMSIS\Include;..\cmsis\Device\Include;..\cmsis\Device\Include\ARTY_CM3;..\main;..\gpio;..\uart;..\spi;..\iic;..\vdma;..\cmos;..\image;..\timer;..\lcd;..\delay;..\axis_switch;..\uart16550;..\Gizutils;..\Gizwits;..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -569,6 +569,16 @@
               <FileName>switch.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\axis_switch\switch.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>UART550</GroupName>
+          <Files>
+            <File>
+              <FileName>uart16550.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uart16550\uart16550.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -853,6 +863,56 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Xilinx_UART550</GroupName>
+          <Files>
+            <File>
+              <FileName>xuartns550.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_format.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_format.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_intr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_intr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_l.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_l.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_options.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_options.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_sinit.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_stats.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_stats.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>HLS_Threshold2</GroupName>
           <Files>
             <File>
@@ -989,6 +1049,41 @@
               <FileName>xdraw_line_hls_sinit.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Gizutils</GroupName>
+          <Files>
+            <File>
+              <FileName>common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizutils\common.c</FilePath>
+            </File>
+            <File>
+              <FileName>dataPointTools.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizutils\dataPointTools.c</FilePath>
+            </File>
+            <File>
+              <FileName>ringbuffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizutils\ringbuffer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Gizwits</GroupName>
+          <Files>
+            <File>
+              <FileName>gizwits_product.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizwits\gizwits_product.c</FilePath>
+            </File>
+            <File>
+              <FileName>gizwits_protocol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizwits\gizwits_protocol.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1564,6 +1659,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>UART550</GroupName>
+          <Files>
+            <File>
+              <FileName>uart16550.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\uart16550\uart16550.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Xilinx_GPIO</GroupName>
           <Files>
             <File>
@@ -1844,6 +1949,56 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Xilinx_UART550</GroupName>
+          <Files>
+            <File>
+              <FileName>xuartns550.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_format.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_format.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_g.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_intr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_intr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_l.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_l.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_options.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_options.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_selftest.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_selftest.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_sinit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_sinit.c</FilePath>
+            </File>
+            <File>
+              <FileName>xuartns550_stats.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\uartns550_v3_5\src\xuartns550_stats.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>HLS_Threshold2</GroupName>
           <Files>
             <File>
@@ -1980,6 +2135,41 @@
               <FileName>xdraw_line_hls_sinit.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_sinit.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Gizutils</GroupName>
+          <Files>
+            <File>
+              <FileName>common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizutils\common.c</FilePath>
+            </File>
+            <File>
+              <FileName>dataPointTools.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizutils\dataPointTools.c</FilePath>
+            </File>
+            <File>
+              <FileName>ringbuffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizutils\ringbuffer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Gizwits</GroupName>
+          <Files>
+            <File>
+              <FileName>gizwits_product.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizwits\gizwits_product.c</FilePath>
+            </File>
+            <File>
+              <FileName>gizwits_protocol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Gizwits\gizwits_protocol.c</FilePath>
             </File>
           </Files>
         </Group>

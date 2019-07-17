@@ -42,14 +42,18 @@
 #include "spi_my.h"
 #include "lcd.h"
 #include "switch.h"
+#include "uart16550.h"
 
+#include "gizwits_product.h"
+#include "common.h"
 
 extern u8 keyboard_space[12];
 extern u8 keyboard_up[12];
 
-//#define SIM_BUILD
+// #define SIM_BUILD
 // #define DEBUG
 // #define DDR_TEST
+#define GIZ
 /*******************************************************************/
 
 int main (void)
@@ -80,9 +84,11 @@ int main (void)
         u32 *pIllegalAddr = (u32 *)0x40200000;
     */
 
-//    xil_printf("start the program\r\n");
     // Initialise the UART
     InitialiseUART();
+
+    // Iniyialise the UART16550
+    UartNs550_Initialize();
 
     // Initialise the IIC
 #ifndef DEBUG
@@ -110,6 +116,9 @@ int main (void)
     NVIC_EnableIRQ(UART0_IRQn);
     NVIC_EnableIRQ(UART_KEY_IRQn);
     EnableUARTInterrupts();
+
+    // Enable UART16550 Interrupts
+    NVIC_EnableIRQ(UartNs0_IRQn);
 
     // Enable IIC Interrupts
     NVIC_EnableIRQ(IIC0_IRQn);
@@ -192,8 +201,10 @@ int main (void)
 #endif
 
     // Initialize the AXIS_SWITCH
+#ifndef DEBUG
     Switch_Init();
     SetDefaultChannel(0);
+#endif
 
     // Initialize the ov5640 cmos
 #ifndef DEBUG
@@ -207,16 +218,23 @@ int main (void)
 #endif
 
     // timer 0 initialize
-    Timer0_Initialise(50000000);
-    // EnableTIMER0Interrupts();
-    DisableTIMER0Interrupts();
+    Timer0_Initialise(50000);
+    EnableTIMER0Interrupts();
+    // DisableTIMER0Interrupts();
 
     /* Initialize the LCD screen */
+#ifndef DEBUG
     Lcd_Init();
     LCD_Clear(WHITE);
-    // LCD_Clear(RED);
+#endif
 
-    // LCD_ShowNum1(80, 95, 0, 5, RED);
+#ifdef GIZ
+
+    userInit();
+
+    gizwitsInit();
+
+#endif
 
     // Main loop.  Handle LEDs and switches via interrupt
     xil_printf("Initialize all successful, start the main loop\r\n");
@@ -235,11 +253,19 @@ int main (void)
         // Lcd_Spi_Write_Byte(0x5a);
         // Get_Hsv();
         // plate_fsm();
+
+#ifndef DEBUG
         show_plate();
-        // 
-        
-        // UART_Keyboard_Send(keyboard_space, 12);
-        // UART_Keyboard_Send(keyboard_up, 12);
+#endif
+
+#ifdef GIZ
+
+        userHandle();
+
+        gizwitsHandle((dataPoint_t *)&currentDataPoint);
+#endif
+
+        // UartNs550_0_Send(keyboard_space, 12);
     }
 }
 

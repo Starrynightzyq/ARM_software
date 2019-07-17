@@ -10,7 +10,7 @@ u16 columns = 0;
 u16 rows = 0;
 
 //?ʾ?????
-void show_plate_num(u32 *p, u8 position)
+void show_plate_num(u8 *p, u8 position)
 {
 	int i;
 	for (i = 0; i < 5; i++)

@@ -11,9 +11,13 @@
  */
 #define TIMER_CNTR_0	 0
 
+// #define DEBUG
+
 static XTmrCtr Timer0_Inst;   /* The instance of the Timer Counter */
 
 static void Timer0CounterHandler(void *CallBackRef, u8 TmrCtrNumber);
+
+void gizTimerMs(void);
 
 /*
  * 初始化定时器0
@@ -117,7 +121,10 @@ void DisableTIMER0Interrupts(void)
 void Timer0CounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 {
 	// XTmrCtr *InstancePtr = (XTmrCtr *)CallBackRef;
-	xil_printf("timer0 interrupt events\r\n");
+	gizTimerMs();
+#ifdef DEBUG
+	xil_printf("tim0 intr\r\n");
+#endif
 }
 
 /*
