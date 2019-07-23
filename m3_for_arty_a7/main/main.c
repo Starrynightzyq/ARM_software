@@ -47,8 +47,9 @@
 #include "gizwits_product.h"
 #include "common.h"
 
-extern u8 keyboard_space[12];
-extern u8 keyboard_up[12];
+// extern u8 keyboard_space[12];
+// extern u8 keyboard_up[12];
+extern u8 Lcd_Clr_Flag;
 
 // #define SIM_BUILD
 // #define DEBUG
@@ -257,6 +258,12 @@ int main (void)
 #ifndef DEBUG
         show_plate();
 #endif
+
+        if (Lcd_Clr_Flag)
+        {
+            LCD_Clear(WHITE);
+            Lcd_Clr_Flag = 0;
+        }
 
 #ifdef GIZ
 

@@ -6,6 +6,10 @@
 #include "lcd.h"
 #include "dis_plate.h"
 #include "uart.h"
+#include "gpio.h"
+
+#include "gizwits_product.h"
+#include "common.h"
 
 #ifdef XPAR_XTHRESHOLD2_0_DEVICE_ID
 #include "xthreshold2.h"
@@ -23,7 +27,7 @@
 #include "xprojection_mul_hls.h"
 #endif
 
-#ifdef XPAR_XPROJECTION_MUL_HLS_0_DEVICE_ID
+#ifdef XPAR_XDRAW_LINE_HLS_0_DEVICE_ID
 #include "xdraw_line_hls.h"
 #endif
 
@@ -35,8 +39,20 @@
 #include "xcontrast_hls_rom.h"
 #endif
 
-#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_AXI_GPIO_0_DEVICE_ID
+#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_CONTRAST_JUDGE_1_DEVICE_ID
+#include "judge.h"
+#endif
+
+#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_CONTRAST_AXI_GPIO_0_DEVICE_ID
 #include "xgpio.h"
+#endif
+
+#ifdef XPAR_XAXIS2RAM_0_DEVICE_ID
+#include "xaxis2ram.h"
+#endif
+
+#ifdef XPAR_XREORDER_HLS_0_DEVICE_ID
+#include "xreorder_hls.h"
 #endif
 
 #ifdef XPAR_XTHRESHOLD2_0_DEVICE_ID
@@ -55,7 +71,7 @@ static XMask Mask;
 static XProjection_mul_hls Projection_Mul;
 #endif
 
-#ifdef XPAR_XPROJECTION_MUL_HLS_0_DEVICE_ID
+#ifdef XPAR_XDRAW_LINE_HLS_0_DEVICE_ID
 static XDraw_line_hls Draw_Lines;
 #endif
 
@@ -67,30 +83,30 @@ static XResize_hls_axis Resize;
 static XContrast_hls_rom Contrast;
 #endif
 
-#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_AXI_GPIO_0_DEVICE_ID
+#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_CONTRAST_AXI_GPIO_0_DEVICE_ID
 static XGpio Gpio_Sort;
 #endif
 
-// volatile u8 Sort_Flag = 0;
+#ifdef XPAR_XAXIS2RAM_0_DEVICE_ID
+static XAxis2ram Axis2ram;
+#endif
+
+#ifdef XPAR_XREORDER_HLS_0_DEVICE_ID
+static XReorder_hls Reorder;
+#endif
+
+#define JUDGE_BASEADDR XPAR_OV_CMOS_IMAGE_PROCESS_CONTRAST_JUDGE_1_S_AXI_BASEADDR
+
 volatile u32 char_index = 0;
-// u32 char_index_t = 0;
-// volatile u32 char_diff = 0;
+volatile u32 char_index_first = 0;
 
-u8 char_addr = 0;               // 车牌中字的位置
 u8 v_char_index_now[8] = {0}; // 前一组结果
-// u32 v_char_diff_now[8] = {0};  // 前一组差值
-// u32 v_char_index_last[8] = {0}; // 前一组结果
-// u32 v_char_diff_last[8] = {0};  // 前一组差值
-// u32 v_char_index_show[8] = {0}; // 前一组结果
-// u32 v_char_diff_show[8] = {0};  // 前一组差值
 
-// u8 recognize_done = 0;	// 识别完成标记位
-u8 show_plate_flag = 0;
+volatile u8 show_plate_flag = 0;
+
+volatile u8 recognize_on = 0;
 
 int plate_counter = 0; // 识别到的车牌数
-
-u8 keyboard_space[12] = {0x0C, 0x00, 0xA1, 0x01, 0x00, 0x00, 0x2C, 0x00, 0x00, 0x00, 0x00, 0x00};
-u8 keyboard_up[12] = {0x0C, 0x00, 0xA1, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 // #define DEBUG
 #define LCD_SHOW
@@ -138,10 +154,11 @@ int Initialize_image_process(void)
 
 	XProjection1_hls_Set_threshold_width(&Projection, 20);
 	XProjection1_hls_Set_threshold_height(&Projection, 105);
-	XProjection1_hls_Set_shrink_x_min(&Projection, 15); //15
+	XProjection1_hls_Set_shrink_x_min(&Projection, 20); //15
 	XProjection1_hls_Set_shrink_x_max(&Projection, 5);  // 5
 	XProjection1_hls_Set_shrink_y_min(&Projection, 13); // 13
 	XProjection1_hls_Set_shrink_y_max(&Projection, 13); // 13
+	XProjection1_hls_Set_range_min(&Projection, 10);
 
 	XProjection1_hls_InterruptGlobalDisable(&Projection);
 	XProjection1_hls_EnableAutoRestart(&Projection);
@@ -183,13 +200,16 @@ int Initialize_image_process(void)
 
 	XProjection_mul_hls_Set_threshold_v(&Projection_Mul, 5);
 
+	XProjection_mul_hls_Set_range_min(&Projection_Mul, 10);
+	XProjection_mul_hls_Set_range_max(&Projection_Mul, 70);
+
 	XProjection_mul_hls_InterruptGlobalDisable(&Projection_Mul);
 	XProjection_mul_hls_EnableAutoRestart(&Projection_Mul);
 	XProjection_mul_hls_Start(&Projection_Mul);
 #endif
 
-#ifdef XPAR_XPROJECTION_MUL_HLS_0_DEVICE_ID
-	Status = XDraw_line_hls_Initialize(&Draw_Lines, XPAR_XPROJECTION_MUL_HLS_0_DEVICE_ID);
+#ifdef XPAR_XDRAW_LINE_HLS_0_DEVICE_ID
+	Status = XDraw_line_hls_Initialize(&Draw_Lines, XPAR_XDRAW_LINE_HLS_0_DEVICE_ID);
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
@@ -199,9 +219,13 @@ int Initialize_image_process(void)
 
 	XDraw_line_hls_Set_rows(&Draw_Lines, IMAGE_ROWS);
 	XDraw_line_hls_Set_cols(&Draw_Lines, IMAGE_COLS);
+	XDraw_line_hls_Set_box_num(&Draw_Lines, 7);
+
 	XDraw_line_hls_InterruptGlobalDisable(&Draw_Lines);
 	XDraw_line_hls_EnableAutoRestart(&Draw_Lines);
 	XDraw_line_hls_Start(&Draw_Lines);
+
+	xil_printf("Draw_Lines is ready %d\r\n", XDraw_line_hls_IsReady(&Draw_Lines));
 
 #endif
 
@@ -210,10 +234,9 @@ int Initialize_image_process(void)
 	if (Status != XST_SUCCESS) {
 		return XST_FAILURE;
 	}
-	else {
-		xil_printf("Initialize the XResize successfully\r\n");
-	}
-
+	// else {
+	// 	xil_printf("Initialize the XResize successfully\r\n");
+	// }
 	XResize_hls_axis_Set_src_rows(&Resize, IMAGE_ROWS);
 	XResize_hls_axis_Set_src_cols(&Resize, IMAGE_COLS);
 	XResize_hls_axis_Set_dst_rows(&Resize, 28);
@@ -221,6 +244,9 @@ int Initialize_image_process(void)
 	XResize_hls_axis_InterruptGlobalDisable(&Resize);
 	XResize_hls_axis_EnableAutoRestart(&Resize);
 	XResize_hls_axis_Start(&Resize);
+
+	xil_printf("Resize is ready %d\r\n", XResize_hls_axis_IsReady(&Resize));
+
 #endif
 
 #ifdef XPAR_XCONTRAST_HLS_ROM_0_DEVICE_ID
@@ -237,13 +263,33 @@ int Initialize_image_process(void)
 	XContrast_hls_rom_Start(&Contrast);
 #endif
 
-#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_AXI_GPIO_0_DEVICE_ID
-	XGpio_Initialize(&Gpio_Sort, XPAR_OV_CMOS_IMAGE_PROCESS_AXI_GPIO_0_DEVICE_ID);
+#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_CONTRAST_JUDGE_1_DEVICE_ID
+	JUDGE_mWriteReg(JUDGE_BASEADDR, JUDGE_S_AXI_SLV_REG0_OFFSET, 80); // 最大误差值
+	JUDGE_mWriteReg(JUDGE_BASEADDR, JUDGE_S_AXI_SLV_REG1_OFFSET, 3); // 最小连续
+	JUDGE_mWriteReg(JUDGE_BASEADDR, JUDGE_S_AXI_SLV_REG2_OFFSET, 3); // 最小计数值
+#endif
+
+#ifdef XPAR_OV_CMOS_IMAGE_PROCESS_CONTRAST_AXI_GPIO_0_DEVICE_ID
+	XGpio_Initialize(&Gpio_Sort, XPAR_OV_CMOS_IMAGE_PROCESS_CONTRAST_AXI_GPIO_0_DEVICE_ID);
 	XGpio_SetDataDirection(&Gpio_Sort, 1, 0xFFFFFFFF); // all input
 	XGpio_SetDataDirection(&Gpio_Sort, 2, 0x00000000); // all output
-	XGpio_DiscreteWrite(&Gpio_Sort, 2, 0x0050203);
+	XGpio_DiscreteWrite(&Gpio_Sort, 2, 0x0050203); // 0x0050 2 03
 	// XGpio_SetDataDirection(&Gpio_Sort, CHAR_DIFF_CHANNEL, 0xFFFFFFFF);
 	// XGpio_InterruptGlobalDisable(&Gpio_Sort); // this gpio doesn't have a interrupt controller
+#endif
+
+#ifdef XPAR_XAXIS2RAM_0_DEVICE_ID
+	XAxis2ram_Initialize(&Axis2ram, XPAR_XAXIS2RAM_0_DEVICE_ID);
+	XAxis2ram_InterruptGlobalDisable(&Axis2ram);
+	XAxis2ram_EnableAutoRestart(&Axis2ram);
+	XAxis2ram_Start(&Axis2ram);
+#endif
+
+#ifdef XPAR_XREORDER_HLS_0_DEVICE_ID
+	XReorder_hls_Initialize(&Reorder, XPAR_XREORDER_HLS_0_DEVICE_ID);
+	XReorder_hls_InterruptGlobalDisable(&Reorder);
+	XReorder_hls_EnableAutoRestart(&Reorder);
+	XReorder_hls_Start(&Reorder);
 #endif
 
 	return 0;
@@ -254,13 +300,16 @@ void XPlate_InterruptHandler(void)
 {
 	show_plate_flag = 1;
 
-	if (plate_counter < (MAX_PLATE_COUNTER - 1))
-	{
-		UART_Keyboard_Send(keyboard_space, 12);
-		UART_Keyboard_Send(keyboard_up, 12);
+	if (recognize_on)
+	{	
+		if (plate_counter < (MAX_PLATE_COUNTER - 1))
+		{
+			Keyboard_Space();
+		}
 	}
 
-	char_index = XGpio_DiscreteRead(&Gpio_Sort, CHAR_INDEX_CHANNEL);
+	// char_index = XGpio_DiscreteRead(&Gpio_Sort, CHAR_INDEX_CHANNEL);
+	char_index = JUDGE_mReadReg(JUDGE_BASEADDR, JUDGE_S_AXI_SLV_REG3_OFFSET);
 	xil_printf("char is %05x\r\n", char_index);
 }
 
@@ -279,33 +328,41 @@ void show_plate(void)
 	int i = 0;
 	u32 char_index_t = 0;
 
-	if (show_plate_flag == 1)           //if识别到新的车牌号
-	{
-		char_index_t = char_index;
-		for (i = 0; i < 5; i++)
+	if (recognize_on)
+	{		
+		if (plate_counter == 0)
 		{
-			v_char_index_now[i] = char_index_t & 0x000F;
-			char_index_t = char_index_t >> 4;
-			if (v_char_index_now[i] == 0xA)
+			Keyboard_Space();
+		}
+		if (show_plate_flag == 1)           //if识别到新的车牌号
+		{
+			char_index_t = char_index;
+			for (i = 0; i < 5; i++)
 			{
-				goto end;
+				v_char_index_now[i] = char_index_t & 0x000F;
+				char_index_t = char_index_t >> 4;
+				if (v_char_index_now[i] == 0xA)
+				{
+					goto end;
+				}
 			}
-		}
-		xil_printf("plate num is %2d\r\n", plate_counter);
+			xil_printf("plate num is %2d\r\n", plate_counter);
 
-#ifdef LCD_SHOW
-		show_plate_num(v_char_index_now, plate_counter);
-#endif
-		if (plate_counter >= (MAX_PLATE_COUNTER - 1))
-		{
-			plate_counter == 0;
-		}
-		else
-		{
-			plate_counter++;
-		}
+	#ifdef LCD_SHOW
+			show_plate_num(v_char_index_now, plate_counter);
+	#endif
+			if (plate_counter >= (MAX_PLATE_COUNTER - 1))
+			{
+	//			plate_counter = 0;
+				Gpio_Image_Set();
+			}
+			else
+			{
+				plate_counter++;
+			}
 
-end:	show_plate_flag = 0;
+	end:	show_plate_flag = 0;
+		}
 	}
 
 }

@@ -25,6 +25,8 @@
 #include "peripherallink.h"     // IRQ definitions
 #include "switch.h"
 #include "gizwits_product.h"
+#include "lcd.h"
+#include "delay.h"
 
 /************************** Variable Definitions **************************/
 /*
@@ -35,6 +37,7 @@
  */
 
 extern int plate_counter; // 识别到的车牌数, 定义在 image.c
+extern u8 recognize_on;
 
 static XGpio Gpio_Led_DIPSw;   /* The driver instance for GPIO Device 0 */
 static XGpio Gpio_Cmos_Ctrl;   /* The driver instance for GPIO Device 1 */
@@ -42,6 +45,8 @@ static XGpio Gpio_DAPLink;     /* The driver instance for the DAPLink GPIO */
 static XGpio Gpio_Lcd;         /* The driver instance for the lcd gpio, [2:0] = {BLK,RES,DC}
 
 /*****************************************************************************/
+
+volatile u8 Lcd_Clr_Flag = 0;
 
 // Initialise the GPIO and zero the outputs
 int InitialiseGPIO( void )
@@ -127,21 +132,38 @@ void GPIO0_Handler ( void )
 {
     volatile uint32_t gpio_dip_switches;
 
+    Gpio_Image_Clr();
+
     // Read dip switches, change LEDs to match
     gpio_dip_switches = XGpio_DiscreteRead(&Gpio_Led_DIPSw, ARTY_A7_DIP_CHANNEL);   // Capture DIP status
     XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, gpio_dip_switches);   // Set LEDs
 
     // clear the plate_counter
-    plate_counter = 0;
+    if (!((gpio_dip_switches >> 1) & 0x01))
+    {
+        plate_counter = 0;
+    }
     // set the AXIS_SWITCH
-    updateChannel((gpio_dip_switches >> 3) & 0x01); // the second sw control the channel  ((gpio_dip_switches >> 1) & 0x03)
+    updateChannel((gpio_dip_switches >> 2) & 0x01); // the second sw control the channel  ((gpio_dip_switches >> 1) & 0x03)
+
+    recognize_on = ((gpio_dip_switches >> 1) & 0x01);
+
+    // clear lcd
+    if ((gpio_dip_switches >> 3) & 0x01)
+    {
+        Lcd_Clr_Flag = 1;
+    }
 
     // GIZ
-    switch((gpio_dip_switches) & 0x07) {
-        case 0x01: gizwitsSetMode(WIFI_RESET_MODE); xil_printf("WIFI_RESET_MODE\r\n"); break;
-        case 0x02: gizwitsSetMode(WIFI_SOFTAP_MODE); xil_printf("WIFI_SOFTAP_MODE\r\n"); break;
-        case 0x04: gizwitsSetMode(WIFI_AIRLINK_MODE); xil_printf("WIFI_AIRLINK_MODE\r\n"); break;
-        default: break;
+    // switch((gpio_dip_switches) & 0x07) {
+    //     case 0x01: gizwitsSetMode(WIFI_RESET_MODE); xil_printf("WIFI_RESET_MODE\r\n"); break;
+    //     case 0x02: gizwitsSetMode(WIFI_SOFTAP_MODE); xil_printf("WIFI_SOFTAP_MODE\r\n"); break;
+    //     case 0x04: gizwitsSetMode(WIFI_AIRLINK_MODE); xil_printf("WIFI_AIRLINK_MODE\r\n"); break;
+    //     default: break;
+    // }
+    if (gpio_dip_switches & 0x01)
+    {
+        gizwitsSetMode(WIFI_SOFTAP_MODE); xil_printf("WIFI_SOFTAP_MODE\r\n");
     }
 
     // Clear interrupt from GPIO
@@ -252,3 +274,12 @@ void Gpio_Lcd_SetBits(u8 pin)
     XGpio_DiscreteWrite(&Gpio_Lcd, 1, (mask | gpio_lcd_data));//(mask | gpio_lcd_data)
 }
 
+void Gpio_Image_Set(void)
+{
+    XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, 0xff);   // Set LEDs
+}
+
+void Gpio_Image_Clr(void)
+{
+    XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, 0x00);   // Set LEDs
+}

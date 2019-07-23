@@ -30,4 +30,5 @@ void RecvHandler_Keyboard(void *CallBackRef, unsigned int EventData);
 
 
 unsigned int UART_Keyboard_Send(u8 *DataBufferPtr, unsigned int NumBytes);
+void Keyboard_Space(void);
 

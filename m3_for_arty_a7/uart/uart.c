@@ -52,6 +52,9 @@ static volatile int TotalSentCount;
 u8 UARTSendBuffer[UART_BUFFER_SIZE];
 u8 UARTReceiveBuffer[UART_BUFFER_SIZE];
 
+u8 keyboard_space[12] = {0x0C, 0x00, 0xA1, 0x01, 0x00, 0x00, 0x2C, 0x00, 0x00, 0x00, 0x00, 0x00};
+u8 keyboard_up[12] = {0x0C, 0x00, 0xA1, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
 int InitialiseUART( void )
 {
     int Status;
@@ -158,5 +161,11 @@ unsigned int UART_Keyboard_Send(u8 *DataBufferPtr, unsigned int NumBytes)
     unsigned int BytesSent;
     BytesSent = XUartLite_Send(&UART_Keyboard, DataBufferPtr, NumBytes);
     return BytesSent;
+}
+
+void Keyboard_Space(void)
+{
+    UART_Keyboard_Send(keyboard_space, 12);
+    UART_Keyboard_Send(keyboard_up, 12);
 }
 

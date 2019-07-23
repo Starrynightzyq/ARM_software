@@ -145,7 +145,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>CMSIS_AGDI</Key>
-          <Name>-X"CMSIS-DAP" -U070000000671ff565648887767124106 -O206 -S10 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN0</Name>
+          <Name>-X"CMSIS-DAP" -U070000000671ff565648887767124106 -O718 -S8 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC8000 -FN0</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -1915,7 +1915,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_5\src\xthreshold2.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_6\src\xthreshold2.c</PathWithFileName>
       <FilenameWithoutPath>xthreshold2.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1927,7 +1927,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_5\src\xthreshold2_g.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_6\src\xthreshold2_g.c</PathWithFileName>
       <FilenameWithoutPath>xthreshold2_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1939,7 +1939,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_5\src\xthreshold2_sinit.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\threshold2_v1_6\src\xthreshold2_sinit.c</PathWithFileName>
       <FilenameWithoutPath>xthreshold2_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1959,7 +1959,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_3\src\xprojection1_hls.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_4\src\xprojection1_hls.c</PathWithFileName>
       <FilenameWithoutPath>xprojection1_hls.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1971,7 +1971,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_3\src\xprojection1_hls_g.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_4\src\xprojection1_hls_g.c</PathWithFileName>
       <FilenameWithoutPath>xprojection1_hls_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1983,7 +1983,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_3\src\xprojection1_hls_sinit.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection1_hls_v4_4\src\xprojection1_hls_sinit.c</PathWithFileName>
       <FilenameWithoutPath>xprojection1_hls_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2003,7 +2003,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_2\src\xmask.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_3\src\xmask.c</PathWithFileName>
       <FilenameWithoutPath>xmask.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2015,7 +2015,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_2\src\xmask_g.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_3\src\xmask_g.c</PathWithFileName>
       <FilenameWithoutPath>xmask_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2027,7 +2027,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_2\src\xmask_sinit.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\mask_v2_3\src\xmask_sinit.c</PathWithFileName>
       <FilenameWithoutPath>xmask_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2047,7 +2047,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_0\src\xprojection_mul_hls.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_1\src\xprojection_mul_hls.c</PathWithFileName>
       <FilenameWithoutPath>xprojection_mul_hls.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2059,7 +2059,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_0\src\xprojection_mul_hls_g.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_1\src\xprojection_mul_hls_g.c</PathWithFileName>
       <FilenameWithoutPath>xprojection_mul_hls_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2071,7 +2071,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_0\src\xprojection_mul_hls_sinit.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\projection_mul_hls_v1_1\src\xprojection_mul_hls_sinit.c</PathWithFileName>
       <FilenameWithoutPath>xprojection_mul_hls_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2091,7 +2091,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_0\src\xresize_hls_axis.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis.c</PathWithFileName>
       <FilenameWithoutPath>xresize_hls_axis.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2103,7 +2103,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_0\src\xresize_hls_axis_g.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis_g.c</PathWithFileName>
       <FilenameWithoutPath>xresize_hls_axis_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2115,7 +2115,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_0\src\xresize_hls_axis_sinit.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis_sinit.c</PathWithFileName>
       <FilenameWithoutPath>xresize_hls_axis_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2135,7 +2135,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_3\src\xcontrast_hls_rom.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_4\src\xcontrast_hls_rom.c</PathWithFileName>
       <FilenameWithoutPath>xcontrast_hls_rom.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2147,7 +2147,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_3\src\xcontrast_hls_rom_g.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_4\src\xcontrast_hls_rom_g.c</PathWithFileName>
       <FilenameWithoutPath>xcontrast_hls_rom_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2159,7 +2159,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_3\src\xcontrast_hls_rom_sinit.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\contrast_hls_rom_v1_4\src\xcontrast_hls_rom_sinit.c</PathWithFileName>
       <FilenameWithoutPath>xcontrast_hls_rom_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2179,7 +2179,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_2\src\xdraw_line_hls.c</PathWithFileName>
       <FilenameWithoutPath>xdraw_line_hls.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2191,7 +2191,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_g.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_2\src\xdraw_line_hls_g.c</PathWithFileName>
       <FilenameWithoutPath>xdraw_line_hls_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -2203,7 +2203,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_1\src\xdraw_line_hls_sinit.c</PathWithFileName>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\draw_line_hls_v1_2\src\xdraw_line_hls_sinit.c</PathWithFileName>
       <FilenameWithoutPath>xdraw_line_hls_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
