@@ -276,10 +276,10 @@ void Gpio_Lcd_SetBits(u8 pin)
 
 void Gpio_Image_Set(void)
 {
-    XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, 0xff);   // Set LEDs
+    XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, 0xffff);   // Set LEDs
 }
 
 void Gpio_Image_Clr(void)
 {
-    XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, 0x00);   // Set LEDs
+    XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, 0x0000);   // Set LEDs
 }

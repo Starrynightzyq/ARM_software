@@ -272,6 +272,7 @@ int main (void)
         gizwitsHandle((dataPoint_t *)&currentDataPoint);
 #endif
 
+				// Gpio_Image_Set();
         // UartNs550_0_Send(keyboard_space, 12);
     }
 }
