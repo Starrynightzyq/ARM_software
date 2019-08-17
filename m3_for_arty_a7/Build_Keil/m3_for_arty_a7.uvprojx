@@ -993,22 +993,22 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>HLS_Resize</GroupName>
+          <GroupName>HLS_Reorder_Resize</GroupName>
           <Files>
             <File>
-              <FileName>xresize_hls_axis.c</FileName>
+              <FileName>xreorder_resize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\reorder_resize_v1_1\src\xreorder_resize.c</FilePath>
             </File>
             <File>
-              <FileName>xresize_hls_axis_g.c</FileName>
+              <FileName>xreorder_resize_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\reorder_resize_v1_1\src\xreorder_resize_g.c</FilePath>
             </File>
             <File>
-              <FileName>xresize_hls_axis_sinit.c</FileName>
+              <FileName>xreorder_resize_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\reorder_resize_v1_1\src\xreorder_resize_sinit.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2079,22 +2079,22 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>HLS_Resize</GroupName>
+          <GroupName>HLS_Reorder_Resize</GroupName>
           <Files>
             <File>
-              <FileName>xresize_hls_axis.c</FileName>
+              <FileName>xreorder_resize.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\reorder_resize_v1_1\src\xreorder_resize.c</FilePath>
             </File>
             <File>
-              <FileName>xresize_hls_axis_g.c</FileName>
+              <FileName>xreorder_resize_g.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis_g.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\reorder_resize_v1_1\src\xreorder_resize_g.c</FilePath>
             </File>
             <File>
-              <FileName>xresize_hls_axis_sinit.c</FileName>
+              <FileName>xreorder_resize_sinit.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis_sinit.c</FilePath>
+              <FilePath>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\reorder_resize_v1_1\src\xreorder_resize_sinit.c</FilePath>
             </File>
           </Files>
         </Group>

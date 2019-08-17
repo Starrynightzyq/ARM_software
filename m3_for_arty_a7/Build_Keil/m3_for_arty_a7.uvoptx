@@ -158,57 +158,22 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Buffer</ItemText>
+          <ItemText>char_buffer</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>reg</ItemText>
+          <ItemText>plate_counter,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Buffer_frist_adder</ItemText>
+          <ItemText>v_char_index_now</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>IIC1_instance</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>IIC0_instance</ItemText>
-        </Ww>
-        <Ww>
-          <count>5</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>InstancePtr</ItemText>
-        </Ww>
-        <Ww>
-          <count>6</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>i</ItemText>
-        </Ww>
-        <Ww>
-          <count>7</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>TransferInProgress</ItemText>
-        </Ww>
-        <Ww>
-          <count>8</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>ConfigPtr</ItemText>
-        </Ww>
-        <Ww>
-          <count>9</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>char_index_t</ItemText>
-        </Ww>
-        <Ww>
-          <count>10</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>char_index</ItemText>
+          <ItemText>buffer_valid_flag</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
@@ -880,7 +845,7 @@
 
   <Group>
     <GroupName>GPIO</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1000,7 +965,7 @@
 
   <Group>
     <GroupName>IMAGE</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2079,7 +2044,7 @@
   </Group>
 
   <Group>
-    <GroupName>HLS_Resize</GroupName>
+    <GroupName>HLS_Reorder_Resize</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -2091,8 +2056,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis.c</PathWithFileName>
-      <FilenameWithoutPath>xresize_hls_axis.c</FilenameWithoutPath>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\reorder_resize_v1_1\src\xreorder_resize.c</PathWithFileName>
+      <FilenameWithoutPath>xreorder_resize.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2103,8 +2068,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis_g.c</PathWithFileName>
-      <FilenameWithoutPath>xresize_hls_axis_g.c</FilenameWithoutPath>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\reorder_resize_v1_1\src\xreorder_resize_g.c</PathWithFileName>
+      <FilenameWithoutPath>xreorder_resize_g.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2115,8 +2080,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\resize_hls_axis_v1_2\src\xresize_hls_axis_sinit.c</PathWithFileName>
-      <FilenameWithoutPath>xresize_hls_axis_sinit.c</FilenameWithoutPath>
+      <PathWithFileName>..\sdk_workspace\standalone_bsp_0\Cortex_M3_0\libsrc\reorder_resize_v1_1\src\xreorder_resize_sinit.c</PathWithFileName>
+      <FilenameWithoutPath>xreorder_resize_sinit.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

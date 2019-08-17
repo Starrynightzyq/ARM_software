@@ -19,9 +19,13 @@
 
 #include "m3_for_arty.h"        // Project specific header
 #include "uart16550.h"
+#include "image.h"
 
 // u8 test_buf[12] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c};
-extern u8 v_char_index_now[8]; // 前一组结果
+// extern u8 v_char_index_now[8]; // 前一组结果
+static u8 read_pointer = 0;
+extern u8 char_buffer[20][8]; // 车牌缓冲区
+extern u8 buffer_valid_flag[MAX_PLATE_COUNTER];
 
 static uint32_t timerMsCount;
 
@@ -131,11 +135,22 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
 void userHandle(void)
 {
 
+    if (buffer_valid_flag[read_pointer])
+    {
+        //XXX is Extend Datapoint Address ,User defined
+        memcpy((uint8_t *)currentDataPoint.valueCar_read, (uint8_t *)&(char_buffer[read_pointer][0]), sizeof(currentDataPoint.valueCar_read));
+        buffer_valid_flag[read_pointer] = 0;
 
-    //XXX is Extend Datapoint Address ,User defined
-    memcpy((uint8_t *)currentDataPoint.valueCar_read, v_char_index_now, sizeof(currentDataPoint.valueCar_read));
+        if (read_pointer >= (MAX_PLATE_COUNTER - 1))
+        {
+            read_pointer = 0;
+        }
+        else
+        {
+            read_pointer++;
+        }
 
-
+    }
 }
 
 /**

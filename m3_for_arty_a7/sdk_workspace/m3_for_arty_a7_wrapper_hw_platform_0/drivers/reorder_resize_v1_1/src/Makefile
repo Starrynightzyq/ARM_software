@@ -22,7 +22,7 @@ OUTS = *.o
 
 
 libs:
-	echo "Compiling resize_hls_axis"
+	echo "Compiling reorder_resize"
 	$(COMPILER) $(COMPILER_FLAGS) $(EXTRA_COMPILER_FLAGS) $(INCLUDES) $(LIBSOURCES)
 	$(ARCHIVER) -r ${RELEASEDIR}/${LIB} $(OUTS)
 	make clean

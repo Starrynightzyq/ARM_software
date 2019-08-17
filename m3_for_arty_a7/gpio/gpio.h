@@ -30,6 +30,7 @@ void Gpio_Lcd_SetBits(u8 pin);
 void Gpio_Image_Set(void);
 void Gpio_Image_Clr(void);
 
+void Ap_Start(void);
 
 // void GPIO0_Handler ( void );
 // void GPIO1_Handler ( void );

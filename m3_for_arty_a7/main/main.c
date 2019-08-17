@@ -50,6 +50,7 @@
 // extern u8 keyboard_space[12];
 // extern u8 keyboard_up[12];
 extern u8 Lcd_Clr_Flag;
+extern u8 read_flag;
 
 // #define SIM_BUILD
 // #define DEBUG
@@ -267,8 +268,12 @@ int main (void)
 
 #ifdef GIZ
 
-        userHandle();
-
+        if (read_flag)
+        {
+            userHandle();
+            read_flag = 0;
+        }
+        
         gizwitsHandle((dataPoint_t *)&currentDataPoint);
 #endif
 

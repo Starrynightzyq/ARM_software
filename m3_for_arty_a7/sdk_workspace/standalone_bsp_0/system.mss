@@ -6,7 +6,6 @@ BEGIN OS
  PARAMETER OS_NAME = standalone
  PARAMETER OS_VER = 6.7
  PARAMETER PROC_INSTANCE = Cortex_M3_0
- PARAMETER profile_timer = axi_timer_0
  PARAMETER sleep_timer = axi_timer_0
  PARAMETER stdin = axi_uartlite_0
  PARAMETER stdout = axi_uartlite_0
@@ -75,9 +74,21 @@ BEGIN DRIVER
 END
 
 BEGIN DRIVER
+ PARAMETER DRIVER_NAME = judge
+ PARAMETER DRIVER_VER = 1.0
+ PARAMETER HW_INSTANCE = ov_cmos_Image_Process_contrast_judge_1
+END
+
+BEGIN DRIVER
  PARAMETER DRIVER_NAME = draw_line_hls
  PARAMETER DRIVER_VER = 1.2
  PARAMETER HW_INSTANCE = ov_cmos_Image_Process_drawlines_draw_line_hls_0
+END
+
+BEGIN DRIVER
+ PARAMETER DRIVER_NAME = gpio
+ PARAMETER DRIVER_VER = 4.3
+ PARAMETER HW_INSTANCE = ov_cmos_Image_Process_gpio_ap_ctrl
 END
 
 BEGIN DRIVER
@@ -99,9 +110,9 @@ BEGIN DRIVER
 END
 
 BEGIN DRIVER
- PARAMETER DRIVER_NAME = resize_hls_axis
- PARAMETER DRIVER_VER = 1.2
- PARAMETER HW_INSTANCE = ov_cmos_Image_Process_resize_resize_hls_axis_0
+ PARAMETER DRIVER_NAME = reorder_resize
+ PARAMETER DRIVER_VER = 1.1
+ PARAMETER HW_INSTANCE = ov_cmos_Image_Process_resize_reorder_resize_0
 END
 
 BEGIN DRIVER
@@ -144,12 +155,6 @@ BEGIN DRIVER
  PARAMETER DRIVER_NAME = mig_7series
  PARAMETER DRIVER_VER = 2.1
  PARAMETER HW_INSTANCE = ov_cmos_mig_7series_0
-END
-
-BEGIN DRIVER
- PARAMETER DRIVER_NAME = judge
- PARAMETER DRIVER_VER = 1.0
- PARAMETER HW_INSTANCE = ov_cmos_Image_Process_contrast_judge_1
 END
 
 

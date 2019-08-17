@@ -13,6 +13,9 @@
 
 // #define DEBUG
 
+static u32 read_buffer_time_counter = 0;
+u8 read_flag = 0;
+
 static XTmrCtr Timer0_Inst;   /* The instance of the Timer Counter */
 
 static void Timer0CounterHandler(void *CallBackRef, u8 TmrCtrNumber);
@@ -122,6 +125,14 @@ void Timer0CounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 {
 	// XTmrCtr *InstancePtr = (XTmrCtr *)CallBackRef;
 	gizTimerMs();
+
+	read_buffer_time_counter++;
+	if (read_buffer_time_counter == 500) // 500 ms计时
+	{
+		read_buffer_time_counter = 0;
+		read_flag = 1;
+	}
+	
 #ifdef DEBUG
 	xil_printf("tim0 intr\r\n");
 #endif

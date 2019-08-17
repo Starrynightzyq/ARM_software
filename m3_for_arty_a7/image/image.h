@@ -28,6 +28,8 @@ void show_plate(void);
 
 void Get_Hsv(void);
 
+void Clear_Buffer_Valid_Flag(void);
+
 #ifdef __cplusplus
 }
 #endif

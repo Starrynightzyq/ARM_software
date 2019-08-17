@@ -38,17 +38,17 @@
 *******************************************************************/
 
 #include "xparameters.h"
-#include "xresize_hls_axis.h"
+#include "xreorder_resize.h"
 
 /*
 * The configuration table for devices
 */
 
-XResize_hls_axis_Config XResize_hls_axis_ConfigTable[XPAR_XRESIZE_HLS_AXIS_NUM_INSTANCES] =
+XReorder_resize_Config XReorder_resize_ConfigTable[XPAR_XREORDER_RESIZE_NUM_INSTANCES] =
 {
 	{
-		XPAR_OV_CMOS_IMAGE_PROCESS_RESIZE_RESIZE_HLS_AXIS_0_DEVICE_ID,
-		XPAR_OV_CMOS_IMAGE_PROCESS_RESIZE_RESIZE_HLS_AXIS_0_S_AXI_AXILITES_BASEADDR
+		XPAR_OV_CMOS_IMAGE_PROCESS_RESIZE_REORDER_RESIZE_0_DEVICE_ID,
+		XPAR_OV_CMOS_IMAGE_PROCESS_RESIZE_REORDER_RESIZE_0_S_AXI_AXILITES_BASEADDR
 	}
 };
 

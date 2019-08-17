@@ -55,6 +55,10 @@
 #include "xreorder_hls.h"
 #endif
 
+#ifdef XPAR_XREORDER_RESIZE_0_DEVICE_ID
+#include "xreorder_resize.h"
+#endif
+
 #ifdef XPAR_XTHRESHOLD2_0_DEVICE_ID
 static XThreshold2 Threshold;
 #endif
@@ -91,6 +95,10 @@ static XGpio Gpio_Sort;
 static XAxis2ram Axis2ram;
 #endif
 
+#ifdef XPAR_XREORDER_RESIZE_0_DEVICE_ID
+static XReorder_resize Resize;
+#endif
+
 #ifdef XPAR_XREORDER_HLS_0_DEVICE_ID
 static XReorder_hls Reorder;
 #endif
@@ -101,6 +109,8 @@ volatile u32 char_index = 0;
 volatile u32 char_index_first = 0;
 
 u8 v_char_index_now[8] = {0}; // 前一组结果
+u8 char_buffer[20][8] = {0}; // 车牌缓冲区
+u8 buffer_valid_flag[MAX_PLATE_COUNTER] = {0}; // buffer 中有数据标志
 
 volatile u8 show_plate_flag = 0;
 
@@ -265,8 +275,21 @@ int Initialize_image_process(void)
 
 #ifdef XPAR_OV_CMOS_IMAGE_PROCESS_CONTRAST_JUDGE_1_DEVICE_ID
 	JUDGE_mWriteReg(JUDGE_BASEADDR, JUDGE_S_AXI_SLV_REG0_OFFSET, 80); // 最大误差值
-	JUDGE_mWriteReg(JUDGE_BASEADDR, JUDGE_S_AXI_SLV_REG1_OFFSET, 3); // 最小连续
+	JUDGE_mWriteReg(JUDGE_BASEADDR, JUDGE_S_AXI_SLV_REG1_OFFSET, 10); // 最小连续
 	JUDGE_mWriteReg(JUDGE_BASEADDR, JUDGE_S_AXI_SLV_REG2_OFFSET, 3); // 最小计数值
+#endif
+
+#ifdef XPAR_XREORDER_RESIZE_0_DEVICE_ID
+	Status = XReorder_resize_Initialize(&Resize, XPAR_XREORDER_RESIZE_0_DEVICE_ID);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	else {
+		xil_printf("Initialize the XResize successfully\r\n");
+	}
+
+	XReorder_resize_Set_dst_rows(&Resize, 28);
+	XReorder_resize_Set_dst_cols(&Resize, 28);
 #endif
 
 #ifdef XPAR_OV_CMOS_IMAGE_PROCESS_CONTRAST_AXI_GPIO_0_DEVICE_ID
@@ -292,6 +315,8 @@ int Initialize_image_process(void)
 	XReorder_hls_Start(&Reorder);
 #endif
 
+	Ap_Start();
+
 	return 0;
 }
 
@@ -310,7 +335,7 @@ void XPlate_InterruptHandler(void)
 
 	// char_index = XGpio_DiscreteRead(&Gpio_Sort, CHAR_INDEX_CHANNEL);
 	char_index = JUDGE_mReadReg(JUDGE_BASEADDR, JUDGE_S_AXI_SLV_REG3_OFFSET);
-	xil_printf("char is %05x\r\n", char_index);
+	xil_printf("plate is %07x\r\n", char_index);
 }
 
 int Image_Interrupt_setup(void)
@@ -330,13 +355,15 @@ void show_plate(void)
 
 	if (recognize_on)
 	{		
+		
 		if (plate_counter == 0)
 		{
 			Keyboard_Space();
 		}
+		
 		if (show_plate_flag == 1)           //if识别到新的车牌号
 		{
-			char_index_t = char_index;
+			char_index_t = char_index >> 8; // 不显示前两位
 			for (i = 0; i < 5; i++)
 			{
 				v_char_index_now[i] = char_index_t & 0x000F;
@@ -350,6 +377,11 @@ void show_plate(void)
 
 	#ifdef LCD_SHOW
 			show_plate_num(v_char_index_now, plate_counter);
+
+			// 写入缓冲队列
+			memcpy((uint8_t *)&(char_buffer[plate_counter][0]), (uint8_t *)(v_char_index_now), sizeof(v_char_index_now)); // 将识别的车牌复制到缓存中
+			buffer_valid_flag[plate_counter] = 1; // 将有效位置1
+
 	#endif
 			if (plate_counter >= (MAX_PLATE_COUNTER - 1))
 			{
@@ -403,4 +435,15 @@ void Get_Hsv(void)
 	s = XThreshold2_Get_s(&Threshold);
 	v = XThreshold2_Get_v(&Threshold);
 	xil_printf("\r\nh %d, s %d, v %d\r\n", h, s, v);
+}
+
+void Clear_Buffer_Valid_Flag(void)
+{
+	// int i = 0;
+	// for (int i = 0; i < MAX_PLATE_COUNTER; i++)
+	// {
+	// 	buffer_valid_flag[i] = 0;
+	// }
+
+	memset((uint8_t*)&buffer_valid_flag, 0, sizeof(buffer_valid_flag));
 }

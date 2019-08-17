@@ -27,6 +27,7 @@
 #include "gizwits_product.h"
 #include "lcd.h"
 #include "delay.h"
+#include "image.h"
 
 /************************** Variable Definitions **************************/
 /*
@@ -42,7 +43,8 @@ extern u8 recognize_on;
 static XGpio Gpio_Led_DIPSw;   /* The driver instance for GPIO Device 0 */
 static XGpio Gpio_Cmos_Ctrl;   /* The driver instance for GPIO Device 1 */
 static XGpio Gpio_DAPLink;     /* The driver instance for the DAPLink GPIO */
-static XGpio Gpio_Lcd;         /* The driver instance for the lcd gpio, [2:0] = {BLK,RES,DC}
+static XGpio Gpio_Lcd;         /* The driver instance for the lcd gpio, [2:0] = {BLK,RES,DC} */
+static XGpio Gpio_ApCtrl;
 
 /*****************************************************************************/
 
@@ -73,6 +75,11 @@ int InitialiseGPIO( void )
         return XST_FAILURE;
     }
 
+    status = XGpio_Initialize(&Gpio_ApCtrl, XPAR_OV_CMOS_IMAGE_PROCESS_GPIO_AP_CTRL_DEVICE_ID);
+    if (status != XST_SUCCESS)  {
+        return XST_FAILURE;
+    }
+
     // GPIO0
     // Port0 drives led_4bits.  Set bottom 4 UART ports to be outputs.
     XGpio_SetDataDirection(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, 0xFFFFFFF0);
@@ -92,6 +99,8 @@ int InitialiseGPIO( void )
     // Single channel, all output.
     XGpio_SetDataDirection(&Gpio_Lcd, 1, 0x00000000);
 
+    // Ap Ctrl Gpio
+    XGpio_SetDataDirection(&Gpio_ApCtrl, 1, 0x00000000);
 
     // Default value of cmos_pwdn and cmos_rst
     XGpio_DiscreteWrite(&Gpio_Cmos_Ctrl, CMOS_PWDN_CHANNEL, 0x1); // pwdn works high
@@ -142,6 +151,7 @@ void GPIO0_Handler ( void )
     if (!((gpio_dip_switches >> 1) & 0x01))
     {
         plate_counter = 0;
+        Clear_Buffer_Valid_Flag();
     }
     // set the AXIS_SWITCH
     updateChannel((gpio_dip_switches >> 2) & 0x01); // the second sw control the channel  ((gpio_dip_switches >> 1) & 0x03)
@@ -283,3 +293,10 @@ void Gpio_Image_Clr(void)
 {
     XGpio_DiscreteWrite(&Gpio_Led_DIPSw, ARTY_A7_LED_CHANNEL, 0x0000);   // Set LEDs
 }
+
+void Ap_Start(void)
+{
+    u32 temp;
+    XGpio_DiscreteWrite(&Gpio_ApCtrl, 1, 1);
+}
+

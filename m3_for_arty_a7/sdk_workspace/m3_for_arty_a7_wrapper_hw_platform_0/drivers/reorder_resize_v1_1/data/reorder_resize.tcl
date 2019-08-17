@@ -6,17 +6,17 @@
 # ==============================================================
 
 proc generate {drv_handle} {
-    xdefine_include_file $drv_handle "xparameters.h" "XResize_hls_axis" \
+    xdefine_include_file $drv_handle "xparameters.h" "XReorder_resize" \
         "NUM_INSTANCES" \
         "DEVICE_ID" \
         "C_S_AXI_AXILITES_BASEADDR" \
         "C_S_AXI_AXILITES_HIGHADDR"
 
-    xdefine_config_file $drv_handle "xresize_hls_axis_g.c" "XResize_hls_axis" \
+    xdefine_config_file $drv_handle "xreorder_resize_g.c" "XReorder_resize" \
         "DEVICE_ID" \
         "C_S_AXI_AXILITES_BASEADDR"
 
-    xdefine_canonical_xpars $drv_handle "xparameters.h" "XResize_hls_axis" \
+    xdefine_canonical_xpars $drv_handle "xparameters.h" "XReorder_resize" \
         "DEVICE_ID" \
         "C_S_AXI_AXILITES_BASEADDR" \
         "C_S_AXI_AXILITES_HIGHADDR"

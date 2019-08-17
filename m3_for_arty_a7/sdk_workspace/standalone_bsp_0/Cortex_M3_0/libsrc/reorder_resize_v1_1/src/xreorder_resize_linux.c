@@ -8,7 +8,7 @@
 #ifdef __linux__
 
 /***************************** Include Files *********************************/
-#include "xresize_hls_axis.h"
+#include "xreorder_resize.h"
 
 /***************** Macros (Inline Functions) Definitions *********************/
 #define MAX_UIO_PATH_SIZE       256
@@ -20,18 +20,18 @@
 typedef struct {
     u32 addr;
     u32 size;
-} XResize_hls_axis_uio_map;
+} XReorder_resize_uio_map;
 
 typedef struct {
     int  uio_fd;
     int  uio_num;
     char name[ MAX_UIO_NAME_SIZE ];
     char version[ MAX_UIO_NAME_SIZE ];
-    XResize_hls_axis_uio_map maps[ MAX_UIO_MAPS ];
-} XResize_hls_axis_uio_info;
+    XReorder_resize_uio_map maps[ MAX_UIO_MAPS ];
+} XReorder_resize_uio_info;
 
 /***************** Variable Definitions **************************************/
-static XResize_hls_axis_uio_info uio_info;
+static XReorder_resize_uio_info uio_info;
 
 /************************** Function Implementation *************************/
 static int line_from_file(char* filename, char* linebuf) {
@@ -49,19 +49,19 @@ static int line_from_file(char* filename, char* linebuf) {
     return 0;
 }
 
-static int uio_info_read_name(XResize_hls_axis_uio_info* info) {
+static int uio_info_read_name(XReorder_resize_uio_info* info) {
     char file[ MAX_UIO_PATH_SIZE ];
     sprintf(file, "/sys/class/uio/uio%d/name", info->uio_num);
     return line_from_file(file, info->name);
 }
 
-static int uio_info_read_version(XResize_hls_axis_uio_info* info) {
+static int uio_info_read_version(XReorder_resize_uio_info* info) {
     char file[ MAX_UIO_PATH_SIZE ];
     sprintf(file, "/sys/class/uio/uio%d/version", info->uio_num);
     return line_from_file(file, info->version);
 }
 
-static int uio_info_read_map_addr(XResize_hls_axis_uio_info* info, int n) {
+static int uio_info_read_map_addr(XReorder_resize_uio_info* info, int n) {
     int ret;
     char file[ MAX_UIO_PATH_SIZE ];
     info->maps[n].addr = UIO_INVALID_ADDR;
@@ -74,7 +74,7 @@ static int uio_info_read_map_addr(XResize_hls_axis_uio_info* info, int n) {
     return 0;
 }
 
-static int uio_info_read_map_size(XResize_hls_axis_uio_info* info, int n) {
+static int uio_info_read_map_size(XReorder_resize_uio_info* info, int n) {
     int ret;
     char file[ MAX_UIO_PATH_SIZE ];
     sprintf(file, "/sys/class/uio/uio%d/maps/map%d/size", info->uio_num, n);
@@ -86,8 +86,8 @@ static int uio_info_read_map_size(XResize_hls_axis_uio_info* info, int n) {
     return 0;
 }
 
-int XResize_hls_axis_Initialize(XResize_hls_axis *InstancePtr, const char* InstanceName) {
-	XResize_hls_axis_uio_info *InfoPtr = &uio_info;
+int XReorder_resize_Initialize(XReorder_resize *InstancePtr, const char* InstanceName) {
+	XReorder_resize_uio_info *InfoPtr = &uio_info;
 	struct dirent **namelist;
     int i, n;
     char* s;
@@ -134,8 +134,8 @@ int XResize_hls_axis_Initialize(XResize_hls_axis *InstancePtr, const char* Insta
     return XST_SUCCESS;
 }
 
-int XResize_hls_axis_Release(XResize_hls_axis *InstancePtr) {
-	XResize_hls_axis_uio_info *InfoPtr = &uio_info;
+int XReorder_resize_Release(XReorder_resize *InstancePtr) {
+	XReorder_resize_uio_info *InfoPtr = &uio_info;
 
     assert(InstancePtr != NULL);
     assert(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
