@@ -39,6 +39,7 @@
 
 extern int plate_counter; // 识别到的车牌数, 定义在 image.c
 extern u8 recognize_on;
+extern u8 read_pointer;
 
 static XGpio Gpio_Led_DIPSw;   /* The driver instance for GPIO Device 0 */
 static XGpio Gpio_Cmos_Ctrl;   /* The driver instance for GPIO Device 1 */
@@ -151,7 +152,8 @@ void GPIO0_Handler ( void )
     if (!((gpio_dip_switches >> 1) & 0x01))
     {
         plate_counter = 0;
-        Clear_Buffer_Valid_Flag();
+        // read_pointer = 0;
+        // Clear_Buffer_Valid_Flag();
     }
     // set the AXIS_SWITCH
     updateChannel((gpio_dip_switches >> 2) & 0x01); // the second sw control the channel  ((gpio_dip_switches >> 1) & 0x03)
@@ -161,6 +163,8 @@ void GPIO0_Handler ( void )
     // clear lcd
     if ((gpio_dip_switches >> 3) & 0x01)
     {
+        plate_counter = 0;
+        read_pointer = 0;
         Lcd_Clr_Flag = 1;
     }
 

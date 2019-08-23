@@ -23,7 +23,7 @@
 
 // u8 test_buf[12] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c};
 // extern u8 v_char_index_now[8]; // 前一组结果
-static u8 read_pointer = 0;
+u8 read_pointer = 0;
 extern u8 char_buffer[20][8]; // 车牌缓冲区
 extern u8 buffer_valid_flag[MAX_PLATE_COUNTER];
 

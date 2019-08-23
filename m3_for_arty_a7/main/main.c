@@ -215,7 +215,7 @@ int main (void)
 
     // Initialize the VDMA
 #ifndef DEBUG
-    Video_Buffer_Initialize(); // Initialize the video buffer
+//    Video_Buffer_Initialize(); // Initialize the video buffer
     VDMA_Config();
 #endif
 
